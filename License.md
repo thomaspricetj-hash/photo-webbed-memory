@@ -110,6 +110,17 @@ The Software is provided “AS IS” without warranty of any kind.
 
 The copyright holder is not liable for any damages arising from evaluation or use.
 
+## 7. No Reverse Engineering
+
+The Licensee is strictly prohibited from reverse engineering, decompiling, disassembling, analyzing, studying, or attempting to derive the source code, internal structure, underlying algorithms, architectural design, memory system, cognitive processes, or any implementation details of the Software. 
+
+The Licensee may not:
+- inspect or analyze the Software for the purpose of understanding its design or operation;
+- derive or attempt to derive any concepts, patterns, structures, or methods used in the Software;
+- recreate, re‑implement, emulate, or reproduce any part of the Software’s architecture, memory system, photonic propagation model, fractal echo system, clustering logic, consolidation/drift mechanisms, or any other functional or structural component;
+- use any observed behavior, output, or performance characteristics of the Software to design or develop competing technology or derivative works.
+
+Any attempt to bypass, circumvent, or violate this clause constitutes a **material breach** of this Agreement and immediately terminates all rights granted under this license.
 
 
 For commercial licensing or IP acquisition, contact:  
