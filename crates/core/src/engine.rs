@@ -1,12 +1,13 @@
 use crate::{
     graph::Graph,
     node::{Node, NodeKind, NodeId},
-    edge::EdgeKind,
+    edge::{Edge, EdgeKind, EdgeId},
     heatmap::HeatLayer,
     scratchpad::Scratchpad,
     decay::{decay, promote},
     photonic::PhotonicPropagationEngine,
     memory_cognition::MemoryCognitionEngine,
+    semantic_scene::SemanticEngine,
 };
 
 use std::collections::HashMap;
@@ -28,6 +29,7 @@ pub struct MemoryEngine {
     pub states: HashMap<NodeId, NodeState>,
     pub scratchpad: Scratchpad,
     pub cognition: MemoryCognitionEngine,
+    pub semantic: SemanticEngine,
 }
 
 impl MemoryEngine {
@@ -37,6 +39,7 @@ impl MemoryEngine {
             states: HashMap::new(),
             scratchpad: Scratchpad::new(),
             cognition: MemoryCognitionEngine::new(8),
+            semantic: SemanticEngine::new(),
         }
     }
 
@@ -59,7 +62,7 @@ impl MemoryEngine {
     }
 
     pub fn link(&mut self, from: NodeId, to: NodeId, kind: EdgeKind, weight: f32) {
-        let edge = crate::edge::Edge::new(from, to, kind, weight);
+        let edge = Edge::new(from, to, kind, weight);
         self.graph.add_edge(edge);
     }
 
@@ -93,15 +96,13 @@ impl MemoryEngine {
         }
 
         self.scratchpad.activate(id, lane);
-
         self.reinforce_edges(id, now);
 
         let photonic = PhotonicPropagationEngine::new();
         photonic.photonic_tick(self, id);
 
-        // Borrow-checker safe fractal echo
-        let fractal = self.cognition.fractal_echo.clone();
-        let _ = fractal.echo(self);
+        let cognition = self.cognition.clone();
+        cognition.cognition_tick(self);
 
         self.prune_edges();
     }
@@ -119,7 +120,7 @@ impl MemoryEngine {
     }
 
     fn prune_edges(&mut self) {
-        let dead_ids: Vec<_> = self
+        let dead_ids: Vec<EdgeId> = self
             .graph
             .edges
             .iter()
@@ -155,7 +156,6 @@ impl MemoryEngine {
             photonic.photonic_tick(self, id);
         }
 
-        // Borrow-checker safe cognition tick
         let cognition = self.cognition.clone();
         cognition.cognition_tick(self);
 
@@ -172,5 +172,32 @@ impl MemoryEngine {
             })
             .collect()
     }
-}
 
+    /// Ingest a high-level “scene” as text, build semantic graph,
+    /// store episodic memory, and project key entities into the core graph.
+    pub fn ingest_text_scene(&mut self, text: &str, now: u64) -> u64 {
+        let graph = self.semantic.encode_text_scene(text);
+        let scene_id = self.semantic.store_scene(graph.clone());
+
+        let labels: Vec<String> = graph.nodes.values().map(|n| n.label.clone()).collect();
+
+        for label in labels {
+            let existing = self
+                .graph
+                .nodes
+                .iter()
+                .find(|(_, n)| n.label == label)
+                .map(|(id, _)| *id);
+
+            let id = if let Some(id) = existing {
+                id
+            } else {
+                self.add_node(&label, NodeKind::Concept)
+            };
+
+            self.activate(id, now, "scene");
+        }
+
+        scene_id
+    }
+}
