@@ -1,7 +1,6 @@
 // src/semantic_scene.rs
 //
 
-
 use std::collections::{HashMap, HashSet};
 use std::time::{SystemTime, UNIX_EPOCH};
 
@@ -178,6 +177,11 @@ impl SemanticEngine {
         scene_id
     }
 
+    /// PUBLIC WRAPPER — allows MemoryEngine to generate summary nodes
+    pub fn summarize_scene(&self, graph: &SceneGraph) -> String {
+        self.compress_scene(graph)
+    }
+
     /// 3) Temporal Binding
     pub fn link_scenes(&mut self, from_scene: u64, to_scene: u64, relation: &str, strength: f32) {
         if let Some(ep) = self.episodes.get_mut(&from_scene) {
@@ -190,7 +194,7 @@ impl SemanticEngine {
         }
     }
 
-    /// 4) Meaning-based Compression
+    /// 4) Meaning-based Compression (PRIVATE)
     fn compress_scene(&self, graph: &SceneGraph) -> String {
         let mut important: Vec<&SceneNode> = graph
             .nodes
@@ -316,3 +320,4 @@ impl SemanticEngine {
         ctx
     }
 }
+

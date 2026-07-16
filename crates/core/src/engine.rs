@@ -174,14 +174,38 @@ impl MemoryEngine {
     }
 
     /// Ingest a high-level “scene” as text, build semantic graph,
-    /// store episodic memory, and project key entities into the core graph.
+    /// store episodic memory, and project key entities + summary into the core graph.
     pub fn ingest_text_scene(&mut self, text: &str, now: u64) -> u64 {
+        // 1) Encode scene into semantic graph
         let graph = self.semantic.encode_text_scene(text);
+
+        // 2) Store scene and get summary string
         let scene_id = self.semantic.store_scene(graph.clone());
+        let summary = self.semantic.summarize_scene(&graph);
 
-        let labels: Vec<String> = graph.nodes.values().map(|n| n.label.clone()).collect();
 
-        for label in labels {
+        // 3) Create or reuse a summary node
+        let summary_node_id = {
+            let existing = self
+                .graph
+                .nodes
+                .iter()
+                .find(|(_, n)| n.label == summary)
+                .map(|(id, _)| *id);
+
+            if let Some(id) = existing {
+                id
+            } else {
+                self.add_node(&summary, NodeKind::Summary)
+            }
+        };
+
+        // 4) Project semantic nodes into core memory by label
+        let mut label_to_node: HashMap<String, NodeId> = HashMap::new();
+
+        for scene_node in graph.nodes.values() {
+            let label = scene_node.label.clone();
+
             let existing = self
                 .graph
                 .nodes
@@ -195,8 +219,26 @@ impl MemoryEngine {
                 self.add_node(&label, NodeKind::Concept)
             };
 
+            label_to_node.insert(label, id);
+
+            // Light activation to bind into current context
             self.activate(id, now, "scene");
         }
+
+        // 5) Link summary node to all high-salience entities
+        for scene_node in graph.nodes.values() {
+            if scene_node.salience >= 0.5 {
+                if let Some(&entity_id) = label_to_node.get(&scene_node.label) {
+                    // Summary -> entity
+                    self.link(summary_node_id, entity_id, EdgeKind::Associative, 0.9);
+                    // Entity -> summary (bidirectional)
+                    self.link(entity_id, summary_node_id, EdgeKind::Associative, 0.9);
+                }
+            }
+        }
+
+        // 6) Activate summary node strongly as a long-term anchor
+        self.activate(summary_node_id, now, "summary");
 
         scene_id
     }
