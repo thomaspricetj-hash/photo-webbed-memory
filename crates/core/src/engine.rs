@@ -32,6 +32,9 @@ pub struct MemoryEngine {
     pub cognition: MemoryCognitionEngine,
     pub semantic: SemanticEngine,
     pub index: MemoryIndex,
+
+    /// Reflex table: stimulus label -> reflex target node
+    pub reflex_table: HashMap<String, NodeId>,
 }
 
 impl MemoryEngine {
@@ -43,8 +46,41 @@ impl MemoryEngine {
             cognition: MemoryCognitionEngine::new(8),
             semantic: SemanticEngine::new(),
             index: MemoryIndex::new(),
+            reflex_table: HashMap::new(),
         }
     }
+
+    // ------------------------------------------------------------
+    // REFLEX SYSTEM
+    // ------------------------------------------------------------
+
+    /// Register a reflex: stimulus label -> target node
+    pub fn add_reflex(&mut self, stimulus: &str, target: NodeId) {
+        self.reflex_table.insert(stimulus.to_lowercase(), target);
+    }
+
+    /// Remove a reflex
+    pub fn remove_reflex(&mut self, stimulus: &str) {
+        self.reflex_table.remove(&stimulus.to_lowercase());
+    }
+
+    /// Trigger reflex if stimulus matches (no recursion on reflex lane)
+    pub fn trigger_reflex(&mut self, label: &str, now: u64) {
+        let key = label.to_lowercase();
+        if let Some(&target) = self.reflex_table.get(&key) {
+            // Strong, immediate activation on reflex lane
+            self.activate_internal(target, now, "reflex", true);
+
+            if let Some(state) = self.states.get_mut(&target) {
+                state.stability = (state.stability + 0.15).min(1.0);
+                state.heat.short_term += 2.0;
+            }
+        }
+    }
+
+    // ------------------------------------------------------------
+    // CORE ENGINE
+    // ------------------------------------------------------------
 
     pub fn add_node(&mut self, label: &str, kind: NodeKind) -> NodeId {
         let node = Node::new(label, kind);
@@ -83,7 +119,27 @@ impl MemoryEngine {
         self.scratchpad.unpin(id, lane);
     }
 
+    /// Public activation entrypoint
     pub fn activate(&mut self, id: NodeId, now: u64, lane: &str) {
+        self.activate_internal(id, now, lane, false);
+    }
+
+    pub(crate) fn activate_internal(
+        &mut self,
+        id: NodeId,
+        now: u64,
+        lane: &str,
+        is_reflex_lane: bool,
+    ) {
+        // Trigger reflex BEFORE normal activation, but not from reflex lane
+        if !is_reflex_lane {
+            let label_opt = self.graph.nodes.get(&id).map(|n| n.label.clone());
+            if let Some(label) = label_opt {
+                self.trigger_reflex(&label, now);
+            }
+        }
+
+        // Normal activation
         if let Some(state) = self.states.get_mut(&id) {
             let dt = (now - state.last_access) as f32;
 
@@ -104,10 +160,8 @@ impl MemoryEngine {
         let photonic = PhotonicPropagationEngine::new();
         photonic.photonic_tick(self, id);
 
-        // avoid borrow conflict: clone cognition engine
         let cog = self.cognition.clone();
         cog.cognition_tick(self);
-        
 
         self.prune_edges();
     }
@@ -161,9 +215,7 @@ impl MemoryEngine {
             photonic.photonic_tick(self, id);
         }
 
-        // avoid borrow conflict: clone cognition engine
         let cog = self.cognition.clone();
-
         cog.cognition_tick(self);
 
         self.prune_edges();
@@ -237,7 +289,6 @@ impl MemoryEngine {
 
         self.activate(summary_node_id, now, "summary");
 
-        // avoid borrow conflict: rebuild index via clone
         let mut idx = self.index.clone();
         idx.rebuild(self);
         self.index = idx;

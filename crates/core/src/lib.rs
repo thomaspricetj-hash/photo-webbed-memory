@@ -32,6 +32,7 @@ pub mod photonic;
 pub mod memory_cognition;
 pub mod semantic_scene;
 pub mod memory_index;
+pub mod reflex;
 
 //
 // Re-exports for external users

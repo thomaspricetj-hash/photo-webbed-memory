@@ -1,8 +1,8 @@
-Photo‑Webbed Core
+📘 Photo‑Webbed Core
 Synthetic Memory Graph + Cognitive Dynamics Engine
-Photo‑Webbed Core is a Rust‑based cognitive memory engine built around a dynamic 3D graph, dual‑layer heatmaps, semantic encoding, episodic memory, summary‑anchored meaning nodes, photonic propagation, fractal echo reinforcement, and adaptive long‑term consolidation. It provides a foundation for synthetic cognition, emergent reasoning, and memory‑driven agents.
+Photo‑Webbed Core is a Rust‑based cognitive memory engine built around a dynamic 3D graph, dual‑layer heatmaps, semantic encoding, episodic memory, summary‑anchored meaning nodes, reflex‑driven fast‑path activation, photonic propagation, fractal echo reinforcement, and adaptive long‑term consolidation. It provides a foundation for synthetic cognition, emergent reasoning, and memory‑driven agents.
 
-Features
+🚀 Features
 🧠 Cognitive Memory Architecture
 Dual‑layer heatmaps (short‑term + long‑term)
 
@@ -16,6 +16,14 @@ Episodic memory with contextual tagging
 
 Summary nodes as long‑term semantic anchors
 
+Reflex subsystem for instant stimulus → response activation
+
+Reflex learning (Hebbian‑style)
+
+Reflex decay (time‑based weakening)
+
+Reflex‑biased propagation and stability shaping
+
 🔗 Dynamic Graph Engine
 Spatial nodes with 3D positions
 
@@ -27,6 +35,8 @@ Concept nodes derived from semantic scenes
 
 Summary nodes linked to high‑salience entities
 
+Reflex nodes become high‑stability anchors
+
 🌐 Photonic Propagation Engine
 Wave‑based activation propagation
 
@@ -37,6 +47,8 @@ Resonance‑driven memory boosting
 Hybrid propagation across the cognitive graph
 
 Summary nodes participate in propagation cycles
+
+Reflex nodes bias amplitude and resonance
 
 🧩 Semantic & Episodic Memory
 Text‑to‑scene semantic encoding
@@ -51,6 +63,29 @@ Temporal linking (before / after / causal)
 
 Summary‑anchored semantic nodes for long‑term recall
 
+Reflex events optionally link into episodic traces
+
+⚡ Reflex Memory System (New)
+Instant stimulus → response activation
+
+Reflex strength modeling (0–1)
+
+Reflex heat + stability shaping
+
+Reflex usage tracking
+
+Reflex learning (strength increases with use)
+
+Reflex decay (weakens if unused)
+
+Reflex generalization hooks (e.g., “dog” → “animal”)
+
+Reflex‑biased photonic propagation
+
+Reflex nodes become long‑term stability anchors
+
+This subsystem provides biologically inspired fast‑path cognition, enabling rapid associative recall and meaning‑anchored activation.
+
 🔁 Memory Cognition Subsystems
 Consolidation Engine — stabilizes resonant nodes
 
@@ -62,19 +97,33 @@ Fractal Echo Engine — reinforces repeating activation rhythms
 
 Cognition Cycle Engine — orchestrates full memory dynamics
 
-🔄 Full Cognitive Cycle
-Activation → Propagation → Interference → Resonance
-→ Consolidation → Drift → Clustering → Echo
-→ Semantic Encoding → Episodic Storage → Summary Anchoring → Recall
+Reflex Engine — fast‑path activation + learning + decay
 
-Installation
+🔄 Full Cognitive Cycle (Updated)
+Code
+Stimulus
+→ Reflex Activation (fast path)
+→ Propagation
+→ Interference
+→ Resonance
+→ Consolidation
+→ Drift
+→ Clustering
+→ Echo
+→ Semantic Encoding
+→ Episodic Storage
+→ Summary Anchoring
+→ Recall
+Reflex activation now occurs before propagation, biasing the entire cognitive cycle.
+
+📦 Installation
 bash
 cargo add photo-webbed-core
 Or add to your Cargo.toml:
 
 toml
 photo-webbed-core = "0.1"
-Usage Examples
+🛠 Usage Examples
 Basic Setup
 rust
 use photo_webbed_core::prelude::*;
@@ -145,7 +194,7 @@ fn main() {
         println!("Node {} -> {}", id.0, node.label);
     }
 }
-Summary‑Based Memory
+📘 Summary‑Based Memory
 Each ingested scene generates a summary node:
 
 compressed meaning representation
