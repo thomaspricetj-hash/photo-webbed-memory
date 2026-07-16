@@ -5,8 +5,9 @@ use rand::Rng;
 pub struct NodeId(pub u64);
 
 /// Types of nodes in the cognitive graph
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub enum NodeKind {
+
     Token,
     Concept,
     Document,

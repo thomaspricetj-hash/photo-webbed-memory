@@ -31,6 +31,7 @@ pub mod memory_reuse;
 pub mod photonic;
 pub mod memory_cognition;
 pub mod semantic_scene;
+pub mod memory_index;
 
 //
 // Re-exports for external users
@@ -46,6 +47,7 @@ pub use engine::{MemoryEngine, NodeState};
 pub use memory_predictor::MemoryPredictor;
 pub use memory_linking::MemoryLinker;
 pub use memory_reuse::MemoryReuseEngine;
+pub use memory_index::MemoryIndex;
 
 pub use photonic::PhotonicPropagationEngine;
 

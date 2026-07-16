@@ -1,6 +1,6 @@
 use crate::{
     graph::Graph,
-    node::{Node, NodeKind, NodeId},
+    node::{Node, NodeId, NodeKind},
     edge::{Edge, EdgeKind, EdgeId},
     heatmap::HeatLayer,
     scratchpad::Scratchpad,
@@ -8,6 +8,7 @@ use crate::{
     photonic::PhotonicPropagationEngine,
     memory_cognition::MemoryCognitionEngine,
     semantic_scene::SemanticEngine,
+    memory_index::MemoryIndex,
 };
 
 use std::collections::HashMap;
@@ -30,6 +31,7 @@ pub struct MemoryEngine {
     pub scratchpad: Scratchpad,
     pub cognition: MemoryCognitionEngine,
     pub semantic: SemanticEngine,
+    pub index: MemoryIndex,
 }
 
 impl MemoryEngine {
@@ -40,6 +42,7 @@ impl MemoryEngine {
             scratchpad: Scratchpad::new(),
             cognition: MemoryCognitionEngine::new(8),
             semantic: SemanticEngine::new(),
+            index: MemoryIndex::new(),
         }
     }
 
@@ -101,8 +104,10 @@ impl MemoryEngine {
         let photonic = PhotonicPropagationEngine::new();
         photonic.photonic_tick(self, id);
 
-        let cognition = self.cognition.clone();
-        cognition.cognition_tick(self);
+        // avoid borrow conflict: clone cognition engine
+        let cog = self.cognition.clone();
+        cog.cognition_tick(self);
+        
 
         self.prune_edges();
     }
@@ -156,8 +161,10 @@ impl MemoryEngine {
             photonic.photonic_tick(self, id);
         }
 
-        let cognition = self.cognition.clone();
-        cognition.cognition_tick(self);
+        // avoid borrow conflict: clone cognition engine
+        let cog = self.cognition.clone();
+
+        cog.cognition_tick(self);
 
         self.prune_edges();
     }
@@ -176,15 +183,11 @@ impl MemoryEngine {
     /// Ingest a high-level “scene” as text, build semantic graph,
     /// store episodic memory, and project key entities + summary into the core graph.
     pub fn ingest_text_scene(&mut self, text: &str, now: u64) -> u64 {
-        // 1) Encode scene into semantic graph
         let graph = self.semantic.encode_text_scene(text);
 
-        // 2) Store scene and get summary string
         let scene_id = self.semantic.store_scene(graph.clone());
         let summary = self.semantic.summarize_scene(&graph);
 
-
-        // 3) Create or reuse a summary node
         let summary_node_id = {
             let existing = self
                 .graph
@@ -200,7 +203,6 @@ impl MemoryEngine {
             }
         };
 
-        // 4) Project semantic nodes into core memory by label
         let mut label_to_node: HashMap<String, NodeId> = HashMap::new();
 
         for scene_node in graph.nodes.values() {
@@ -221,25 +223,26 @@ impl MemoryEngine {
 
             label_to_node.insert(label, id);
 
-            // Light activation to bind into current context
             self.activate(id, now, "scene");
         }
 
-        // 5) Link summary node to all high-salience entities
         for scene_node in graph.nodes.values() {
             if scene_node.salience >= 0.5 {
                 if let Some(&entity_id) = label_to_node.get(&scene_node.label) {
-                    // Summary -> entity
                     self.link(summary_node_id, entity_id, EdgeKind::Associative, 0.9);
-                    // Entity -> summary (bidirectional)
                     self.link(entity_id, summary_node_id, EdgeKind::Associative, 0.9);
                 }
             }
         }
 
-        // 6) Activate summary node strongly as a long-term anchor
         self.activate(summary_node_id, now, "summary");
+
+        // avoid borrow conflict: rebuild index via clone
+        let mut idx = self.index.clone();
+        idx.rebuild(self);
+        self.index = idx;
 
         scene_id
     }
 }
+
