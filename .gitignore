@@ -1,0 +1,14 @@
+# Rust build artifacts
+target/
+**/*.pdb
+**/*.rlib
+**/*.dll
+**/*.exe
+**/*.so
+**/*.dylib
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
