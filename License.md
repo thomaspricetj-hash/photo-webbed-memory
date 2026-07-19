@@ -1,6 +1,6 @@
 📘 Evaluation License (2026 — MAX‑Tier Edition)
 
-(Updated with Autonomic Homeostasis + BitDrop\_v2 Compression Subsystem + Hybrid Lookup Physics + Loophole‑Sealed Clauses)
+(Updated with Cross‑Section Mapping Engine + Spatial‑Temporal Drift Physics + Multi‑Layer Fusion + Autonomic Homeostasis + BitDrop\_v2 Compression + Hybrid Lookup Physics + Loophole‑Sealed Clauses)
 
 Copyright (c) 2026 Thomas Price — All Rights Reserved
 
@@ -33,6 +33,14 @@ solely for non‑commercial evaluation and testing.
 
 
 No other rights are granted.
+
+No rights are implied.
+
+No rights are transferable.
+
+
+
+This license is NOT open‑source, NOT permissive, and NOT a commercial license.
 
 
 
@@ -82,7 +90,7 @@ You may NOT modify, alter, translate, adapt, or create derivative works of the S
 
 
 
-You may NOT rewrite, re‑implement, emulate, simulate, or reproduce ANY part of the Software’s:
+You may NOT rewrite, re‑implement, emulate, simulate, approximate, or reproduce ANY part of the Software’s:
 
 
 
@@ -210,7 +218,65 @@ autonomic heat‑smoothing physics
 
 
 
-Hybrid Lookup System — Protected Components (NEW, Loophole‑Sealed)
+Cross‑Section Mapping Engine — Protected Components (NEW, Loophole‑Sealed)
+
+You may NOT rewrite, re‑implement, emulate, simulate, approximate, or reproduce ANY part of the cross‑section system, including:
+
+
+
+spatial slice physics (front/back/left/right)
+
+
+
+quadrant mapping (Q1–Q4)
+
+
+
+radial ring mapping (inner/mid/outer)
+
+
+
+motion‑vector drift physics (dx/dy)
+
+
+
+temporal stability scoring
+
+
+
+fused precision scoring
+
+
+
+spatial‑temporal hazard weighting
+
+
+
+directional memory reinforcement
+
+
+
+drift‑aware reflex weighting
+
+
+
+cross‑section integration into MemoryIndex
+
+
+
+cross‑section integration into reflex pipeline
+
+
+
+cross‑section integration into semantic/episodic layers
+
+
+
+This section explicitly protects the spatial‑temporal‑directional memory system and all emergent behaviors.
+
+
+
+Hybrid Lookup System — Protected Components (Updated)
 
 You may NOT rewrite, re‑implement, emulate, simulate, approximate, or reproduce ANY part of the lookup system, including:
 
@@ -380,7 +446,7 @@ derive memory physics from output patterns
 
 
 
-Hybrid Lookup — Reverse Engineering Prohibition (NEW)
+Hybrid Lookup — Reverse Engineering Prohibition (Updated)
 
 You may NOT:
 
@@ -411,10 +477,6 @@ perform statistical inference on lookup behavior
 
 
 build surrogate models that mimic lookup decisions
-
-
-
-This section explicitly protects the lookup system’s retrieval physics.
 
 
 
@@ -486,7 +548,7 @@ build a surrogate model trained on outputs of the Software
 
 
 
-Hybrid Lookup — Simulation \& Reconstruction Prohibition (NEW)
+Hybrid Lookup — Simulation \& Reconstruction Prohibition (Updated)
 
 You may NOT:
 
@@ -513,10 +575,6 @@ design competing retrieval systems based on lookup outputs
 
 
 reconstruct lookup decision trees or fallback ordering
-
-
-
-This section explicitly protects the lookup system’s emergent retrieval behavior.
 
 
 
@@ -644,7 +702,27 @@ its compressed‑substrate architecture
 
 
 
-its hybrid lookup system (NEW)
+its hybrid lookup system
+
+
+
+its cross‑section mapping engine (NEW)
+
+
+
+its spatial‑temporal drift memory (NEW)
+
+
+
+its multi‑layer fusion engine (NEW)
+
+
+
+its fused precision scoring system (NEW)
+
+
+
+remain the exclusive property of the copyright holder.
 
 
 

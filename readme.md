@@ -1,6 +1,8 @@
 📘 Photo‑Webbed Core
 Synthetic Memory Graph + Cognitive Dynamics Engine (MAX‑Tier)
-Photo‑Webbed Core is a Rust‑based cognitive memory engine built around a dynamic 3D graph, dual‑layer heatmaps, semantic encoding, episodic memory, reflex‑driven activation, photonic propagation, fractal echo reinforcement, procedural muscle‑memory learning, autonomic homeostasis, and adaptive long‑term consolidation.
+A Rust‑based cognitive memory engine for synthetic cognition, emergent reasoning, and long‑term adaptive agents.
+
+Photo‑Webbed Core is a MAX‑tier cognitive memory architecture built around a dynamic 3D graph, dual‑layer heatmaps, semantic encoding, episodic memory, reflex‑driven activation, photonic propagation, fractal echo reinforcement, procedural muscle‑memory learning, autonomic homeostasis, and adaptive long‑term consolidation.
 
 It provides a foundation for synthetic cognition, emergent reasoning, and memory‑driven agents.
 
@@ -45,7 +47,7 @@ Reflex‑biased photonic propagation
 
 Reflex nodes promoted to long‑term anchors
 
-🐝 Word Hive Semantic Engine
+🐝 WordHive Semantic Engine
 Word statistics: frequency, co‑occurrence, importance
 
 Semantic clusters (WordCluster)
@@ -123,7 +125,6 @@ This subsystem elevates Photo‑Webbed Core into a full cognitive stack.
 
 🔍 NEW: MAX‑Tier Hybrid Lookup System
 (Semantic Similarity + Compressed Lookup + Hive Generalization)
-
 Photo‑Webbed Core now includes a Tier‑4 hybrid lookup engine capable of retrieving concepts even under drift, compression, mutation, or partial recall.
 
 Lookup Pipeline
@@ -133,17 +134,17 @@ Hive Generalization (WordHive semantic clusters)
 
 Vector‑Based Semantic Similarity
 
-Uses embedding‑based similarity
+embedding‑based similarity
 
-Finds closest semantic scene
+finds closest semantic scene
 
-Selects most salient node
+selects most salient node
 
 BitDrop_v2 Compressed Label Restoration
 
-Compress label → decompress → restore
+compress label → decompress → restore
 
-Matches restored label to graph nodes
+match restored label to graph nodes
 
 Impact
 Drift‑resistant recall
@@ -333,7 +334,5 @@ linked to high‑salience entities
 strongly activated for long‑term stability
 
 participates in photonic propagation
-
-improves recall, clustering, and concept drift modeling
 
 This provides human‑like gist‑based memory, where meaning becomes the anchor for long‑term recall and cognitive routing.
