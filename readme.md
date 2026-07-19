@@ -1,30 +1,88 @@
 📘 Photo‑Webbed Core
-Synthetic Memory Graph + Cognitive Dynamics Engine
+Synthetic Memory Graph + Cognitive Dynamics Engine (MAX‑Tier)
 Photo‑Webbed Core is a Rust‑based cognitive memory engine built around a dynamic 3D graph, dual‑layer heatmaps, semantic encoding, episodic memory, reflex‑driven activation, photonic propagation, fractal echo reinforcement, procedural muscle‑memory learning, and adaptive long‑term consolidation.
 
 It provides a foundation for synthetic cognition, emergent reasoning, and memory‑driven agents.
 
 🚀 Features
 🧠 Cognitive Memory Architecture
-Dual‑layer heatmaps for short‑term and long‑term activation
+Dual‑layer heatmaps (short‑term + long‑term)
 
 Node physics: stability, volatility, resonance, inertia
 
-Scratchpad working‑memory lanes: main, reflex, hive‑bias, scene
+Scratchpad working‑memory lanes:
 
-Semantic decay & promotion via decay() + promote()
+main
+
+reflex
+
+hive-bias
+
+scene
+
+Semantic decay & promotion (decay() + promote())
 
 Episodic memory with contextual tagging + compressed summaries
 
 Summary nodes as long‑term semantic anchors
 
-Reflex subsystem for instant stimulus → response activation
+⚡ Reflex Subsystem
+Instant stimulus → response activation
+
+Reflex strength modeling (0.0–1.0)
+
+Reflex heat + stability shaping
+
+Reflex usage tracking
 
 Reflex learning (Hebbian‑style strengthening)
 
 Reflex decay when unused
 
-Reflex‑biased propagation shaping stability + importance
+Reflex generalization (“dog” → “animal”)
+
+Reflex‑biased photonic propagation
+
+Reflex nodes promoted to long‑term anchors
+
+🐝 Word Hive Semantic Engine
+Word statistics: frequency, co‑occurrence, importance
+
+Semantic clusters (WordCluster)
+
+Hive cells (HiveCell) for higher‑order semantic hubs
+
+Bias propagation (bias_propagation(&label))
+
+Generalization (generalize_word(&summary))
+
+Cluster rebuild cycles integrated into decay ticks
+
+Semantic correlation + cluster‑level reasoning
+
+🌐 Photonic Propagation Engine
+Wave‑based activation propagation
+
+Interference modeling across the graph
+
+Resonance‑driven memory boosting
+
+Hybrid propagation integrating heat, reflex, and semantic layers
+
+Summary nodes participate in propagation cycles
+
+Reflex nodes bias amplitude + resonance
+
+🔗 Dynamic Graph Engine
+Spatial nodes with 3D cognitive geometry
+
+Edge lifecycle: reinforcement, decay, pruning
+
+Automatic link formation via cognition subsystems
+
+Concept nodes derived from semantic scenes
+
+Summary nodes linked to high‑salience entities
 
 ⚡ NEW: Procedural Muscle‑Memory System (MAX‑Tier)
 A full procedural learning subsystem modeled after biological muscle memory.
@@ -44,7 +102,7 @@ Context‑tagged procedural learning (lane‑aware)
 
 Integrates with reflex, semantic, and photonic layers
 
-Autopilot‑driven reinforcement and decay
+Autopilot‑driven reinforcement + decay
 
 Enables fast‑path procedural activation
 
@@ -63,104 +121,27 @@ True procedural cognition
 
 This subsystem elevates Photo‑Webbed Core into a full cognitive stack.
 
-🔗 Dynamic Graph Engine
-Spatial nodes with 3D cognitive geometry
-
-Edges with lifecycle: reinforcement, decay, pruning
-
-Automatic link formation via cognition subsystems
-
-Concept nodes derived from semantic scenes
-
-Summary nodes linked to high‑salience entities
-
-Reflex nodes promoted to long‑term stability anchors
-
-🌐 Photonic Propagation Engine
-Wave‑based activation propagation
-
-Interference modeling across the graph
-
-Resonance‑driven memory boosting
-
-Hybrid propagation integrating heat, reflex, and semantic layers
-
-Summary nodes participate in propagation cycles
-
-Reflex nodes bias amplitude and resonance
-
-🧩 Semantic & Episodic Memory
-Text‑to‑scene semantic encoding
-
-Scene graphs: actors, actions, objects, events
-
-Context extraction: location, time‑of‑day, mood, tags
-
-Episodic storage + retrieval
-
-Temporal linking: before / after / causal relations
-
-Summary‑anchored semantic nodes for long‑term recall
-
-Reflex events optionally linked into episodic traces
-
-⚡ Reflex Memory System
-Instant stimulus → response activation
-
-Reflex strength modeling (0.0–1.0)
-
-Reflex heat + stability shaping
-
-Reflex usage tracking
-
-Reflex learning (strength increases with repeated activation)
-
-Reflex decay when unused
-
-Reflex generalization hooks (“dog” → “animal”)
-
-Reflex‑biased photonic propagation
-
-Reflex nodes promoted to long‑term anchors
-
-Provides biologically inspired fast‑path cognition.
-
-🐝 Word Hive Semantic Engine
-Word statistics: frequency, co‑occurrence, importance
-
-Semantic clusters (WordCluster)
-
-Hive cells (HiveCell) for higher‑order semantic hubs
-
-Bias propagation: bias_propagation(&label)
-
-Generalization: generalize_word(&summary)
-
-Rebuild cycles integrated into decay ticks
-
-Provides semantic correlation, cluster‑level reasoning, and hive‑biased activation.
-
 🔁 Memory Cognition Subsystems
-Consolidation Engine: stabilizes resonant nodes
+Consolidation Engine — stabilizes resonant nodes
 
-Drift Engine: models forgetting + concept drift
+Drift Engine — models forgetting + concept drift
 
-Clustering Engine: forms semantic groups
+Clustering Engine — forms semantic groups
 
-Fractal Echo Engine: reinforces repeating activation rhythms
+Fractal Echo Engine — reinforces repeating activation rhythms
 
-Cognition Cycle Engine: orchestrates full memory dynamics
+Cognition Cycle Engine — orchestrates full memory dynamics
 
-Reflex Engine: fast‑path activation + learning + decay
+Reflex Engine — fast‑path activation + learning + decay
 
-Procedural Engine (Muscle Memory): learns repeated activation patterns
+Procedural Engine — learns repeated activation patterns
 
 🔄 Full Cognitive Cycle
 Code
 Stimulus
 → Reflex Activation (fast path)
 → Hive Bias Propagation
-→ Procedural Muscle Memory Activation (new)
+→ Procedural Muscle Memory Activation (MAX‑Tier)
 → Graph Activation
 → Photonic Propagation
 → Interference
@@ -175,7 +156,7 @@ Stimulus
 → Recall
 Reflex + hive bias + procedural memory now occur before normal activation, biasing the entire cycle toward meaning‑anchored, behavior‑anchored, semantically coherent recall.
 
-🧠 Autopilot System (v1 + v2)
+🧠 Autopilot System (v1 + v2 + Autonomic Homeostasis)
 Autopilot v1
 Importance rebalance
 
@@ -187,16 +168,33 @@ Hive rebuild
 
 Index rebuild
 
-Autopilot v2
+Autopilot v2 (MAX‑Tier)
 Predictive reinforcement (anticipatory cognition)
 
 Adaptive decay curves (biological forgetting model)
 
 Cluster‑level resonance propagation
 
-Procedural reinforcement + decay (new)
+Procedural reinforcement + decay
 
-Autopilot v2 gives the engine self‑healing, self‑optimizing, and self‑stabilizing behavior.
+Autonomic Memory Homeostasis (NEW)
+A synthetic “autonomic nervous system” regulating memory health:
+
+Memory pressure detection
+
+Semantic drift correction
+
+Reflex load balancing
+
+Procedural load balancing
+
+Global heat smoothing
+
+Compression‑triggering via BitDrop v2
+
+Autonomic snapshot logging
+
+This gives the engine self‑healing, self‑optimizing, and self‑stabilizing behavior.
 
 📦 Installation
 Add to your Cargo.toml:
@@ -298,4 +296,4 @@ participates in photonic propagation
 
 improves recall, clustering, and concept drift modeling
 
-This provides human‑like gist‑based memory, where meaning becomes the anchor for long‑term 
+This provides human‑like gist‑based memory, where meaning becomes the anchor for long‑term recall and cognitive routing.

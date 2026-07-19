@@ -1,6 +1,6 @@
-📘 Evaluation License (2026 — Edition)
+📘 Evaluation License (2026 — MAX‑Tier Edition)
 
-(Updated to cover BitDrop\_v2 Compression Engine)
+(Updated with Autonomic Homeostasis + BitDrop\_v2 Compression Subsystem + Loophole‑Sealed Clauses)
 
 Copyright (c) 2026 Thomas Price — All Rights Reserved
 
@@ -36,7 +36,7 @@ No other rights are granted.
 
 
 
-2\. Absolute Prohibitions (MAX‑Tier)
+2\. Absolute Prohibitions (MAX‑Tier, Loophole‑Sealed)
 
 You may NOT, under ANY circumstances:
 
@@ -72,13 +72,17 @@ redistribute, sublicense, publish, disclose, or make the Software available to a
 
 
 
-2.2 Derivative Works \& Architecture Copying (MAX‑Tier)
+use the Software to generate outputs intended to replicate, approximate, or infer its internal behavior, architecture, or physics
+
+
+
+2.2 Derivative Works \& Architecture Copying (MAX‑Tier, Fully Sealed)
 
 You may NOT modify, alter, translate, adapt, or create derivative works of the Software.
 
 
 
-You may NOT rewrite, re‑implement, emulate, or reproduce ANY part of the Software’s:
+You may NOT rewrite, re‑implement, emulate, simulate, or reproduce ANY part of the Software’s:
 
 
 
@@ -91,6 +95,10 @@ algorithms
 
 
 memory system
+
+
+
+autonomic homeostasis subsystem
 
 
 
@@ -110,7 +118,7 @@ reflex system
 
 
 
-procedural muscle‑memory subsystem (MAX‑tier)
+procedural muscle‑memory subsystem
 
 
 
@@ -182,9 +190,29 @@ procedural consolidation physics
 
 
 
-BitDrop\_v2 Compression Engine — Protected Components
+autonomic drift‑correction logic
 
-You may NOT rewrite, re‑implement, emulate, or reproduce ANY part of BitDrop\_v2, including:
+
+
+autonomic compression‑trigger logic
+
+
+
+autonomic reflex‑load balancing
+
+
+
+autonomic procedural‑load balancing
+
+
+
+autonomic heat‑smoothing physics
+
+
+
+BitDrop\_v2 Compression Engine — Protected Components (Loophole‑Sealed)
+
+You may NOT rewrite, re‑implement, emulate, simulate, or reproduce ANY part of BitDrop\_v2, including:
 
 
 
@@ -248,11 +276,23 @@ memory‑snapshot compression
 
 
 
-This section explicitly protects all compression logic, reversible rules, collapse physics, routing systems, and compressed cognitive‑memory formats.
+compressed‑substrate routing physics
 
 
 
-2.3 Reverse Engineering \& Analysis (MAX‑Tier)
+reversible collapse‑rule inference patterns
+
+
+
+compressed‑payload structural signatures
+
+
+
+This section explicitly protects all compression logic, reversible rules, collapse physics, routing systems, and compressed cognitive‑memory formats, including any behavioral, structural, or statistical properties that could be used to infer internal design.
+
+
+
+2.3 Reverse Engineering \& Analysis (MAX‑Tier, Fully Sealed)
 
 You may NOT:
 
@@ -266,7 +306,7 @@ attempt to derive the Software’s internal structure, algorithms, or architectu
 
 
 
-analyze outputs to infer, reconstruct, or replicate internal behavior
+analyze outputs to infer, reconstruct, approximate, or replicate internal behavior
 
 
 
@@ -279,6 +319,14 @@ use observed behavior to design or develop competing technology
 
 
 extract activation signatures, procedural patterns, or cognitive traces
+
+
+
+derive memory physics from output patterns
+
+
+
+infer compression rules from compressed payloads
 
 
 
@@ -312,11 +360,15 @@ extract semantic, episodic, reflex, or procedural structures from compressed dat
 
 
 
-This section explicitly protects BitDrop\_v2’s reversible compression physics and cognitive‑snapshot encoding format.
+perform statistical inference on compressed payloads to approximate BitDrop\_v2 behavior
 
 
 
-2.4 Simulation, Emulation, Reconstruction (MAX‑Tier)
+This section explicitly protects BitDrop\_v2’s reversible compression physics and cognitive‑snapshot encoding format, including all emergent patterns.
+
+
+
+2.4 Simulation, Emulation, Reconstruction (MAX‑Tier, Loophole‑Sealed)
 
 You may NOT:
 
@@ -339,6 +391,14 @@ use any part of the Software to create a similar, related, or competing memory s
 
 
 replicate procedural learning, reflex arcs, semantic drift correction, photonic propagation, or MAX‑tier physics
+
+
+
+approximate the Software’s behavior using statistical, neural, symbolic, or hybrid methods
+
+
+
+build a surrogate model trained on outputs of the Software
 
 
 
@@ -372,11 +432,15 @@ replicate compressed cognitive‑snapshot formats
 
 
 
+approximate BitDrop\_v2 behavior using ML, heuristics, or rule‑based systems
+
+
+
 Any attempt to bypass or violate these prohibitions constitutes a material breach and immediately terminates all rights granted under this license.
 
 
 
-3\. Intellectual Property Protection (MAX‑Tier)
+3\. Intellectual Property Protection (MAX‑Tier, Fully Sealed)
 
 All rights, title, and interest in:
 
@@ -403,6 +467,10 @@ its algorithms
 
 
 its memory system
+
+
+
+its autonomic subsystems
 
 
 
@@ -454,6 +522,10 @@ its procedural consolidation model
 
 
 
+its compressed‑substrate architecture
+
+
+
 BitDrop\_v2 — Explicit IP Protection
 
 All rights, title, and interest in BitDrop\_v2, including:
@@ -489,6 +561,10 @@ compressed cognitive‑snapshot formats
 
 
 semantic/episodic/procedural/reflex compression systems
+
+
+
+compressed‑substrate routing physics
 
 
 
