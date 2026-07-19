@@ -16,6 +16,7 @@ use crate::{
 };
 use bitdrop_v2::BitDrop3DEngine;
 use std::collections::HashMap;
+use std::cmp::Ordering;
 use serde::{Serialize, Deserialize};
 
 // ------------------------------------------------------------
@@ -44,7 +45,7 @@ impl RetrievalRanker {
         all.extend(vector);
         all.extend(reflex);
 
-        all.sort_by(|a, b| b.score.partial_cmp(&a.score).unwrap_or(std::cmp::Ordering::Equal));
+        all.sort_by(|a, b| b.score.partial_cmp(&a.score).unwrap_or(Ordering::Equal));
         all
     }
 }
@@ -82,6 +83,17 @@ pub struct MemoryEngine {
 
     /// BitDrop v2 compressor
     pub compressor: BitDrop3DEngine,
+
+    /// MAX‑tier lookup support
+    pub lookup_cache: HashMap<String, NodeId>,
+    pub lookup_stats: LookupStats,
+}
+
+#[derive(Default)]
+pub struct LookupStats {
+    pub hits: u64,
+    pub misses: u64,
+    pub reinforced: u64,
 }
 
 impl MemoryEngine {
@@ -98,6 +110,89 @@ impl MemoryEngine {
             lock_north_star: MemoryLockNorthStar::new(),
             muscle_memory: MuscleMemoryStore::new(),
             compressor: BitDrop3DEngine::new((4, 4, 64), 6),
+
+            // MAX‑tier lookup support
+            lookup_cache: HashMap::new(),
+            lookup_stats: LookupStats::default(),
+        }
+    }
+
+    /// Hybrid MAX‑tier lookup: cache, direct, hive, semantic, compressed
+    pub fn lookup_node(&mut self, label: &str) -> Option<NodeId> {
+        // 0. Cache fast‑path
+        if let Some(id) = self.lookup_cache.get(label) {
+            self.lookup_stats.hits += 1;
+            return Some(*id);
+        }
+
+        // 1. Direct label match
+        if let Some((id, _)) = self.graph.nodes.iter().find(|(_, n)| n.label == label) {
+            self.lookup_cache.insert(label.to_string(), *id);
+            self.lookup_stats.hits += 1;
+            return Some(*id);
+        }
+
+        // 2. Hive generalization match
+        let hive_gen = self.word_hive.generalize_word(label);
+        if hive_gen != label {
+            if let Some((id, _)) = self.graph.nodes.iter().find(|(_, n)| n.label == hive_gen) {
+                self.lookup_cache.insert(label.to_string(), *id);
+                self.lookup_stats.hits += 1;
+                return Some(*id);
+            }
+        }
+
+        // 3. Semantic similarity via vector search
+        if let Some(sim_hit) = self.semantic.vector_search(label, 1).into_iter().next() {
+            if let Some(ep) = self.semantic.episodes.get(&sim_hit.scene_id) {
+                if let Some(best_node) = ep
+                    .graph
+                    .nodes
+                    .values()
+                    .max_by(|a, b| a.salience.partial_cmp(&b.salience).unwrap_or(Ordering::Equal))
+                {
+                    if let Some((id, _)) =
+                        self.graph.nodes.iter().find(|(_, n)| n.label == best_node.label)
+                    {
+                        self.lookup_cache.insert(label.to_string(), *id);
+                        self.lookup_stats.hits += 1;
+                        return Some(*id);
+                    }
+                }
+            }
+        }
+
+        // 4. BitDrop‑aware compressed lookup: try to restore a label from compressed bytes
+        let compressed = self.compressor.encode(label.as_bytes());
+        let restored_bytes = self.compressor.decode(&compressed);
+        if let Ok(restored) = String::from_utf8(restored_bytes) {
+            if restored != label {
+                if let Some((id, _)) =
+                    self.graph.nodes.iter().find(|(_, n)| n.label == restored)
+                {
+                    self.lookup_cache.insert(label.to_string(), *id);
+                    self.lookup_stats.hits += 1;
+                    return Some(*id);
+                }
+            }
+        }
+
+        self.lookup_stats.misses += 1;
+        None
+    }
+
+    pub fn reinforce_node(&mut self, id: NodeId, now: u64) {
+        if let Some(state) = self.states.get_mut(&id) {
+            state.stability = (state.stability + 0.1).min(1.0);
+            state.importance = (state.importance + 0.5).min(10.0);
+            state.access_count += 1;
+            state.last_access = now;
+
+            // Reinforce heat directly
+            state.heat.short_term += 1.0;
+            state.heat.long_term += 0.5;
+
+            self.lookup_stats.reinforced += 1;
         }
     }
 
@@ -802,3 +897,4 @@ impl MemoryEngine {
         // Wire into real telemetry later.
     }
 }
+

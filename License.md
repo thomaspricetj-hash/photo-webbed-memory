@@ -1,6 +1,6 @@
 📘 Evaluation License (2026 — MAX‑Tier Edition)
 
-(Updated with Autonomic Homeostasis + BitDrop\_v2 Compression Subsystem + Loophole‑Sealed Clauses)
+(Updated with Autonomic Homeostasis + BitDrop\_v2 Compression Subsystem + Hybrid Lookup Physics + Loophole‑Sealed Clauses)
 
 Copyright (c) 2026 Thomas Price — All Rights Reserved
 
@@ -210,6 +210,60 @@ autonomic heat‑smoothing physics
 
 
 
+Hybrid Lookup System — Protected Components (NEW, Loophole‑Sealed)
+
+You may NOT rewrite, re‑implement, emulate, simulate, approximate, or reproduce ANY part of the lookup system, including:
+
+
+
+direct‑label lookup physics
+
+
+
+hive‑generalization lookup
+
+
+
+vector‑based semantic similarity lookup
+
+
+
+salience‑weighted semantic restoration
+
+
+
+compressed‑label restoration via BitDrop\_v2
+
+
+
+multi‑tier fallback routing
+
+
+
+lookup‑cache heuristics
+
+
+
+semantic‑scene similarity scoring
+
+
+
+compressed‑payload label inference
+
+
+
+hybrid lookup ordering, weighting, or decision logic
+
+
+
+any behavioral, structural, or statistical properties of the lookup system
+
+
+
+This section explicitly protects the semantic similarity + compressed lookup pipeline, including all emergent retrieval patterns.
+
+
+
 BitDrop\_v2 Compression Engine — Protected Components (Loophole‑Sealed)
 
 You may NOT rewrite, re‑implement, emulate, simulate, or reproduce ANY part of BitDrop\_v2, including:
@@ -288,7 +342,7 @@ compressed‑payload structural signatures
 
 
 
-This section explicitly protects all compression logic, reversible rules, collapse physics, routing systems, and compressed cognitive‑memory formats, including any behavioral, structural, or statistical properties that could be used to infer internal design.
+This section explicitly protects all compression logic, reversible rules, collapse physics, routing systems, and compressed cognitive‑memory formats.
 
 
 
@@ -326,7 +380,41 @@ derive memory physics from output patterns
 
 
 
-infer compression rules from compressed payloads
+Hybrid Lookup — Reverse Engineering Prohibition (NEW)
+
+You may NOT:
+
+
+
+analyze lookup outputs to infer semantic‑similarity scoring
+
+
+
+derive compressed‑label restoration behavior
+
+
+
+reconstruct hive‑generalization routing
+
+
+
+approximate lookup ordering or fallback logic
+
+
+
+infer semantic‑scene selection heuristics
+
+
+
+perform statistical inference on lookup behavior
+
+
+
+build surrogate models that mimic lookup decisions
+
+
+
+This section explicitly protects the lookup system’s retrieval physics.
 
 
 
@@ -364,10 +452,6 @@ perform statistical inference on compressed payloads to approximate BitDrop\_v2 
 
 
 
-This section explicitly protects BitDrop\_v2’s reversible compression physics and cognitive‑snapshot encoding format, including all emergent patterns.
-
-
-
 2.4 Simulation, Emulation, Reconstruction (MAX‑Tier, Loophole‑Sealed)
 
 You may NOT:
@@ -399,6 +483,40 @@ approximate the Software’s behavior using statistical, neural, symbolic, or hy
 
 
 build a surrogate model trained on outputs of the Software
+
+
+
+Hybrid Lookup — Simulation \& Reconstruction Prohibition (NEW)
+
+You may NOT:
+
+
+
+simulate semantic similarity lookup
+
+
+
+emulate compressed‑label restoration
+
+
+
+replicate hive‑generalization routing
+
+
+
+approximate lookup behavior using ML or heuristics
+
+
+
+design competing retrieval systems based on lookup outputs
+
+
+
+reconstruct lookup decision trees or fallback ordering
+
+
+
+This section explicitly protects the lookup system’s emergent retrieval behavior.
 
 
 
@@ -526,49 +644,13 @@ its compressed‑substrate architecture
 
 
 
+its hybrid lookup system (NEW)
+
+
+
 BitDrop\_v2 — Explicit IP Protection
 
-All rights, title, and interest in BitDrop\_v2, including:
-
-
-
-reversible compression engine
-
-
-
-collapse rules
-
-
-
-PTS mapping
-
-
-
-bloom‑filter routing
-
-
-
-multi‑pass collapse loop
-
-
-
-compressor encode/decode logic
-
-
-
-compressed cognitive‑snapshot formats
-
-
-
-semantic/episodic/procedural/reflex compression systems
-
-
-
-compressed‑substrate routing physics
-
-
-
-remain the exclusive property of the copyright holder.
+All rights, title, and interest in BitDrop\_v2 remain the exclusive property of the copyright holder.
 
 
 

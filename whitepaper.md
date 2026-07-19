@@ -1,6 +1,6 @@
 📘 WHITEPAPER — Photo‑Webbed Core: A Synthetic Cognitive Memory Architecture
 
-(Academic‑grade, acquisition‑ready — updated with Autonomic Homeostasis + BitDrop\_v2 Compression)
+(Academic‑grade, acquisition‑ready — updated with Semantic Similarity Lookup + Compressed Lookup)
 
 Abstract — Updated
 
@@ -8,7 +8,31 @@ Photo‑Webbed Core is a synthetic cognitive memory engine designed to model lon
 
 
 
-BitDrop\_v2 provides reversible, multi‑pass, pattern‑tagged compression for semantic graphs, episodic traces, procedural signatures, and full memory snapshots. This enables efficient persistence, fast retrieval, drift‑resistant stability, and long‑term cognitive coherence. The system forms the foundation for persistent AI agents, cognitive simulations, and next‑generation synthetic intelligence.
+The engine now includes a Tier‑4 hybrid lookup system combining:
+
+
+
+direct label lookup
+
+
+
+hive generalization
+
+
+
+vector‑based semantic similarity
+
+
+
+BitDrop\_v2 compressed‑label restoration
+
+
+
+This enables robust retrieval even under drift, partial recall, or compressed memory conditions.
+
+
+
+BitDrop\_v2 provides reversible, multi‑pass, pattern‑tagged compression for semantic graphs, episodic traces, procedural signatures, and full memory snapshots. This enables efficient persistence, fast retrieval, drift‑resistant stability, and long‑term cognitive coherence.
 
 
 
@@ -66,7 +90,11 @@ compressed memory persistence via BitDrop\_v2
 
 
 
-BitDrop\_v2 enables the engine to store and retrieve cognitive structures efficiently, allowing memory‑driven reasoning, emergent behavior, procedural learning, and stable long‑term identity.
+hybrid semantic + compressed lookup (new)
+
+
+
+The new lookup tier allows the engine to retrieve meaning even when labels drift, compress, mutate, or degrade.
 
 
 
@@ -104,65 +132,53 @@ Edges represent associative, causal, reflexive, or semantic relationships, each 
 
 
 
-BitDrop\_v2 Integration
+Hybrid Lookup System (New)
 
-The engine uses BitDrop\_v2 to compress:
-
-
-
-semantic scene graphs
+The engine now performs multi‑tier lookup:
 
 
 
-episodic traces
+Direct Label Match
 
 
 
-summary nodes
+Hive Generalization
 
 
 
-reflex signatures
+Vector‑Based Semantic Similarity
 
 
 
-procedural signatures
+BitDrop\_v2 Compressed Label Restoration
 
 
 
-full memory snapshots
+This allows retrieval even when:
 
 
 
-This provides:
+labels drift semantically
 
 
 
-reversible compression
+memory is partially compressed
 
 
 
-multi‑pass collapse loops
+episodic traces degrade
 
 
 
-pattern‑tag‑signature (PTS) mapping
+reflex arcs mutate
 
 
 
-bloom‑filtered routing
+procedural signatures evolve
 
 
 
-stable long‑term persistence
-
-
-
-fast decompression for recall cycles
-
-
-
-BitDrop\_v2 transforms the memory substrate into a compact, persistent cognitive archive.
+Lookup becomes a MAX‑tier cognitive stabilizer.
 
 
 
@@ -170,113 +186,41 @@ BitDrop\_v2 transforms the memory substrate into a compact, persistent cognitive
 
 3.1 Dual‑Layer Heatmaps
 
-Each node maintains:
-
-
-
-Short‑Term Heat (STH) — immediate activation
-
-
-
-Long‑Term Heat (LTH) — consolidated memory strength
-
-
-
-Decay and promotion functions regulate memory retention and forgetting.
+Short‑term and long‑term heat regulate activation, decay, and consolidation.
 
 
 
 3.2 Node Physics
 
-Nodes evolve through:
+Nodes evolve through stability, resonance, inertia, volatility, and importance weighting.
 
 
 
-stability
+3.3 Procedural Muscle‑Memory Layer
 
+Repeated activation patterns are compressed into procedural signatures.
 
 
-resonance
 
+3.4 Hybrid Lookup Layer (New)
 
+The lookup layer integrates:
 
-inertia
 
 
+semantic similarity via vector embeddings
 
-volatility
 
 
+compressed lookup via BitDrop\_v2 reversible encoding
 
-importance weighting
 
 
+hive generalization via WordHive clusters
 
-These parameters form the memory physics model.
 
 
-
-3.3 Procedural Muscle‑Memory Layer (New)
-
-Photo‑Webbed Core introduces a procedural memory subsystem modeled after biological muscle memory. This layer captures repeated activation patterns, compresses them into signatures, and reinforces them based on similarity and contextual tags.
-
-
-
-Each procedural pattern maintains:
-
-
-
-signature vector
-
-
-
-similarity profile
-
-
-
-strength
-
-
-
-stability
-
-
-
-volatility
-
-
-
-reinforcement history
-
-
-
-contextual tags
-
-
-
-BitDrop\_v2 Role
-
-Procedural signatures are compressed using BitDrop\_v2, enabling:
-
-
-
-compact storage of repeated routines
-
-
-
-fast retrieval during reflex or semantic activation
-
-
-
-drift‑resistant behavioral stability
-
-
-
-long‑term procedural consolidation
-
-
-
-Procedural memory becomes a first‑class citizen in the compressed cognitive substrate.
+This forms a multi‑path retrieval fabric that resists drift, compression loss, and semantic mutation.
 
 
 
@@ -284,307 +228,193 @@ Procedural memory becomes a first‑class citizen in the compressed cognitive su
 
 4.1 Semantic Encoding
 
-Text scenes are converted into semantic graphs containing:
-
-
-
-actors
-
-
-
-actions
-
-
-
-objects
-
-
-
-context
-
-
-
-salience
-
-
-
-BitDrop\_v2 Role
-
-Semantic graphs are serialized and compressed using BitDrop\_v2, producing:
-
-
-
-compact semantic snapshots
-
-
-
-reversible meaning representations
-
-
-
-stable long‑term anchors
-
-
-
-fast decompression during recall
+Scenes become semantic graphs with actors, actions, objects, context, and salience.
 
 
 
 4.2 Episodic Storage
 
-Scenes are stored with:
+Episodic traces are compressed using BitDrop\_v2.
 
 
 
-timestamps
+4.3 Semantic Similarity Lookup (New)
+
+Vector embeddings allow:
 
 
 
-compressed summaries
+fuzzy matching
 
 
 
-contextual tags
+approximate recall
 
 
 
-semantic anchors
+semantic drift correction
 
 
 
-BitDrop\_v2 Role
-
-Episodic traces are stored as BitDrop\_v2‑compressed payloads, enabling:
+cluster‑level generalization
 
 
 
-efficient long‑term episodic archives
+4.4 Compressed Lookup (New)
+
+BitDrop\_v2 enables:
 
 
 
-fast retrieval
+reversible label restoration
 
 
 
-low‑cost memory footprint
+compressed‑label matching
 
 
 
-stable temporal linking
+drift‑resistant retrieval
 
 
 
-Summary nodes act as long‑term meaning hubs, backed by compressed episodic signatures.
+low‑footprint semantic anchors
 
 
 
 5\. Reflex Memory System — Updated
 
-The reflex subsystem provides:
+Reflex arcs and reflex activation histories are compressed into reflex signatures.
 
 
 
-instant stimulus → response activation
+The lookup layer enhances reflex behavior by enabling:
 
 
 
-reflex strength modeling
+semantic reflex triggering
 
 
 
-reflex learning
+compressed reflex restoration
 
 
 
-reflex decay
-
-
-
-reflex generalization
-
-
-
-reflex‑biased propagation
-
-
-
-BitDrop\_v2 Role
-
-Reflex arcs and reflex activation histories are compressed into reflex signatures, enabling:
-
-
-
-compact reflex storage
-
-
-
-fast reflex recall
-
-
-
-stable reflex patterns across long time spans
-
-
-
-Reflex and procedural memory now share a unified compressed substrate.
+reflex generalization via hive cells
 
 
 
 6\. WordHive Semantic Engine
 
-WordHive performs:
+WordHive performs clustering, co‑occurrence analysis, and semantic generalization.
 
 
 
-frequency analysis
+Lookup integrates WordHive by:
 
 
 
-co‑occurrence tracking
+using hive generalization as a fallback
 
 
 
-semantic clustering
+biasing lookup toward cluster‑stable labels
 
 
 
-hive cell formation
-
-
-
-bias propagation
-
-
-
-generalization mapping
-
-
-
-BitDrop\_v2 Role
-
-Cluster states and hive‑cell summaries are compressed, enabling:
-
-
-
-persistent semantic clusters
-
-
-
-stable hive‑level reasoning
-
-
-
-compact semantic drift tracking
+reinforcing cluster‑level semantic anchors
 
 
 
 7\. Photonic Propagation Engine
 
-A wave‑based propagation model simulates:
+Wave‑based propagation simulates resonance, interference, and semantic harmonics.
 
 
 
-resonance
+Lookup interacts with photonic propagation by:
 
 
 
-interference
+reinforcing photonic‑stable nodes
 
 
 
-amplitude bias
-
-
-
-semantic harmonics
-
-
-
-BitDrop\_v2 Role
-
-Propagation snapshots and resonance fields can be optionally compressed for:
-
-
-
-long‑term propagation analysis
-
-
-
-stable resonance tracking
-
-
-
-compact propagation logs
+biasing retrieval toward resonance hubs
 
 
 
 8\. Cognitive Cycle — Updated
 
-The full cognitive cycle:
+The full cognitive cycle now includes:
 
 
 
-Code
-
-Stimulus
-
-→ Reflex Activation
-
-→ Hive Bias
-
-→ Procedural Muscle‑Memory Activation (new)
-
-→ Graph Activation
-
-→ Photonic Propagation
-
-→ Interference
-
-→ Resonance
-
-→ Consolidation
-
-→ Drift
-
-→ Clustering
-
-→ Fractal Echo
-
-→ Semantic Encoding
-
-→ Episodic Storage
-
-→ Summary Anchoring
-
-→ Recall
-
-BitDrop\_v2 Role
-
-Compression occurs at multiple points:
+Reflex Activation
 
 
 
-semantic encoding → compressed semantic snapshot
+Hive Bias
 
 
 
-episodic storage → compressed episodic trace
+Procedural Activation
 
 
 
-procedural activation → compressed procedural signature
+Graph Activation
 
 
 
-summary anchoring → compressed meaning representation
+Photonic Propagation
 
 
 
-recall → decompressed memory snapshot
+Interference
 
 
 
-BitDrop\_v2 ensures the cognitive cycle remains persistent, compact, and reversible.
+Resonance
+
+
+
+Consolidation
+
+
+
+Drift
+
+
+
+Clustering
+
+
+
+Fractal Echo
+
+
+
+Semantic Encoding
+
+
+
+Episodic Storage
+
+
+
+Summary Anchoring
+
+
+
+Recall
+
+
+
+Hybrid Lookup (new)
+
+
+
+Lookup is now a core stage in the cognitive cycle, enabling recovery from drift, compression, and partial recall.
 
 
 
@@ -618,7 +448,7 @@ predictive reinforcement
 
 
 
-adaptive decay curves
+adaptive decay
 
 
 
@@ -626,15 +456,11 @@ cluster‑level resonance
 
 
 
-procedural reinforcement + decay
+procedural reinforcement
 
 
 
-Autonomic Memory Homeostasis (New)
-
-A synthetic autonomic nervous system regulating memory health:
-
-
+Autonomic Homeostasis
 
 memory pressure detection
 
@@ -656,7 +482,7 @@ global heat smoothing
 
 
 
-compression‑triggering via BitDrop\_v2
+compression‑triggering
 
 
 
@@ -664,39 +490,35 @@ autonomic snapshot logging
 
 
 
-BitDrop\_v2 Role
+Lookup Integration (New)
 
-Autopilot manages compressed memory:
-
-
-
-compresses snapshots during high‑value cycles
+Autopilot now uses lookup to:
 
 
 
-prunes weak compressed traces
+reinforce semantically similar nodes
 
 
 
-reinforces compressed procedural signatures
+stabilize compressed labels
 
 
 
-maintains compressed semantic anchors
+correct drift via vector similarity
 
 
 
-ensures drift‑resistant compressed memory stability
+maintain cluster‑level coherence
 
 
 
-Autopilot becomes a compression‑aware cognitive governor.
+Lookup becomes part of the autonomic nervous system of the engine.
 
 
 
 10\. Applications — Updated
 
-With BitDrop\_v2 compression and autonomic homeostasis, Photo‑Webbed Core supports:
+With semantic similarity lookup, compressed lookup, and autonomic homeostasis, Photo‑Webbed Core supports:
 
 
 
@@ -704,27 +526,23 @@ persistent AI agents
 
 
 
-cognitive robotics with procedural routines
+cognitive robotics
 
 
 
-synthetic companions with stable habits
+synthetic companions
 
 
 
-long‑term reasoning systems with compressed recall
+long‑term reasoning systems
 
 
 
-autonomous systems with adaptive action patterns
+autonomous systems with adaptive memory
 
 
 
 semantic memory research
-
-
-
-cognitive simulations
 
 
 
@@ -738,9 +556,29 @@ low‑footprint embedded cognition
 
 11\. Conclusion — Updated
 
-Photo‑Webbed Core represents a new class of cognitive architecture: a synthetic memory substrate capable of long‑term stability, semantic coherence, reflexive activation, procedural learning, autonomic regulation, and emergent reasoning — all backed by BitDrop\_v2, a reversible, multi‑pass compression engine that enables persistent, compact, and stable cognitive memory.
+Photo‑Webbed Core represents a new class of cognitive architecture: a synthetic memory substrate capable of long‑term stability, semantic coherence, reflexive activation, procedural learning, autonomic regulation, and emergent reasoning — all backed by BitDrop\_v2 and a Tier‑4 hybrid lookup system.
 
 
 
-It provides the foundation for next‑generation AI systems that think, remember, evolve, and persist.
+The new lookup layer provides:
+
+
+
+semantic similarity
+
+
+
+compressed restoration
+
+
+
+hive generalization
+
+
+
+drift‑resistant retrieval
+
+
+
+This transforms Photo‑Webbed Core into a fully persistent, self‑stabilizing cognitive engine capable of thinking, remembering, evolving, and persisting.
 

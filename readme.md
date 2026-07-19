@@ -1,6 +1,6 @@
 📘 Photo‑Webbed Core
 Synthetic Memory Graph + Cognitive Dynamics Engine (MAX‑Tier)
-Photo‑Webbed Core is a Rust‑based cognitive memory engine built around a dynamic 3D graph, dual‑layer heatmaps, semantic encoding, episodic memory, reflex‑driven activation, photonic propagation, fractal echo reinforcement, procedural muscle‑memory learning, and adaptive long‑term consolidation.
+Photo‑Webbed Core is a Rust‑based cognitive memory engine built around a dynamic 3D graph, dual‑layer heatmaps, semantic encoding, episodic memory, reflex‑driven activation, photonic propagation, fractal echo reinforcement, procedural muscle‑memory learning, autonomic homeostasis, and adaptive long‑term consolidation.
 
 It provides a foundation for synthetic cognition, emergent reasoning, and memory‑driven agents.
 
@@ -16,7 +16,7 @@ main
 
 reflex
 
-hive-bias
+hive‑bias
 
 scene
 
@@ -121,6 +121,43 @@ True procedural cognition
 
 This subsystem elevates Photo‑Webbed Core into a full cognitive stack.
 
+🔍 NEW: MAX‑Tier Hybrid Lookup System
+(Semantic Similarity + Compressed Lookup + Hive Generalization)
+
+Photo‑Webbed Core now includes a Tier‑4 hybrid lookup engine capable of retrieving concepts even under drift, compression, mutation, or partial recall.
+
+Lookup Pipeline
+Direct Label Match
+
+Hive Generalization (WordHive semantic clusters)
+
+Vector‑Based Semantic Similarity
+
+Uses embedding‑based similarity
+
+Finds closest semantic scene
+
+Selects most salient node
+
+BitDrop_v2 Compressed Label Restoration
+
+Compress label → decompress → restore
+
+Matches restored label to graph nodes
+
+Impact
+Drift‑resistant recall
+
+Compression‑aware retrieval
+
+Fuzzy semantic matching
+
+Robust long‑term stability
+
+Meaning‑anchored lookup across the entire cognitive substrate
+
+This lookup system is now a core part of reflex activation, semantic ingestion, procedural learning, and autonomic homeostasis.
+
 🔁 Memory Cognition Subsystems
 Consolidation Engine — stabilizes resonant nodes
 
@@ -154,6 +191,7 @@ Stimulus
 → Episodic Storage
 → Summary Anchoring
 → Recall
+→ Hybrid Lookup (MAX‑Tier)
 Reflex + hive bias + procedural memory now occur before normal activation, biasing the entire cycle toward meaning‑anchored, behavior‑anchored, semantically coherent recall.
 
 🧠 Autopilot System (v1 + v2 + Autonomic Homeostasis)
@@ -169,9 +207,9 @@ Hive rebuild
 Index rebuild
 
 Autopilot v2 (MAX‑Tier)
-Predictive reinforcement (anticipatory cognition)
+Predictive reinforcement
 
-Adaptive decay curves (biological forgetting model)
+Adaptive decay curves
 
 Cluster‑level resonance propagation
 
@@ -190,11 +228,19 @@ Procedural load balancing
 
 Global heat smoothing
 
-Compression‑triggering via BitDrop v2
+Compression‑triggering via BitDrop_v2
 
 Autonomic snapshot logging
 
-This gives the engine self‑healing, self‑optimizing, and self‑stabilizing behavior.
+Lookup is now part of autonomic regulation, enabling:
+
+semantic drift correction
+
+compressed‑label stabilization
+
+cluster‑level coherence
+
+reflex + procedural reinforcement
 
 📦 Installation
 Add to your Cargo.toml:
@@ -228,8 +274,6 @@ fn main() {
 }
 Semantic + Episodic Memory
 rust
-use photo_webbed_core::prelude::*;
-
 fn main() {
     let mut engine = MemoryEngine::new();
     let now = 100;
@@ -245,8 +289,6 @@ fn main() {
 }
 Full Cognitive Cycle
 rust
-use photo_webbed_core::prelude::*;
-
 fn main() {
     let mut engine = MemoryEngine::new();
     let now = 0;
@@ -266,8 +308,6 @@ fn main() {
 }
 Scene → Concept Integration
 rust
-use photo_webbed_core::prelude::*;
-
 fn main() {
     let mut engine = MemoryEngine::new();
     let now = 500;
