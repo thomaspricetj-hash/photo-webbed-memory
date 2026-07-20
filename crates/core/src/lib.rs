@@ -19,6 +19,7 @@ pub mod memory_index;
 pub mod reflex;
 pub mod memory_lock_north_star;
 pub mod muscle_memory;
+pub mod memory_authentication;
 
 // ⭐ ONLY ONE declaration
 pub mod word_hive;

@@ -18,6 +18,8 @@ use bitdrop_v2::BitDrop3DEngine;
 use std::collections::HashMap;
 use std::cmp::Ordering;
 use serde::{Serialize, Deserialize};
+use crate::memory_authentication::MemoryAuthEngine;
+
 
 // ------------------------------------------------------------
 // Hybrid retrieval support (Tier‑4 style)
@@ -87,6 +89,10 @@ pub struct MemoryEngine {
     /// MAX‑tier lookup support
     pub lookup_cache: HashMap<String, NodeId>,
     pub lookup_stats: LookupStats,
+
+    /// Memory authentication loop (trust gating for states)
+    pub memory_auth: MemoryAuthEngine,
+
 }
 
 #[derive(Default)]
@@ -110,6 +116,8 @@ impl MemoryEngine {
             lock_north_star: MemoryLockNorthStar::new(),
             muscle_memory: MuscleMemoryStore::new(),
             compressor: BitDrop3DEngine::new((4, 4, 64), 6),
+            
+            memory_auth: MemoryAuthEngine::new(Default::default()),
 
             // MAX‑tier lookup support
             lookup_cache: HashMap::new(),
@@ -493,6 +501,56 @@ impl MemoryEngine {
 
         bincode::deserialize(&decoded).ok()
     }
+
+    pub fn decay_tick_v1(&mut self, now: u64)
+ {
+        for (id, state) in self.states.iter_mut() {
+            let dt = (now - state.last_access) as f32;
+
+            decay(
+                &mut state.heat,
+                dt,
+                state.access_count,
+                state.pinned,
+                state.stability,
+                state.importance,
+            );
+
+            state.stability *= f32::exp(-0.002 * dt);
+
+            let decay_factor = if state.pinned { 0.0005 } else { 0.0015 };
+            state.importance *= f32::exp(-decay_factor * dt);
+
+            if let Some(node) = self.graph.nodes.get_mut(id) {
+                node.decay(dt);
+            }
+        }
+
+        for edge in self.graph.edges.values_mut() {
+            let dt = (now - edge.last_access) as f32;
+            edge.decay(dt);
+        }
+
+        // NEW: memory authentication loop (no removals, only adjustments)
+        self.memory_auth.authenticate_all(&mut self.states, now);
+
+        // Muscle memory maintenance
+        self.muscle_memory.autopilot_maintenance();
+
+        self.word_hive.rebuild_clusters();
+        self.word_hive.rebuild_hive();
+
+        let photonic = PhotonicPropagationEngine::new();
+        let ids: Vec<NodeId> = self.states.keys().copied().collect();
+        for id in ids {
+            photonic.photonic_tick(self, id);
+        }
+
+        self.cognition.clone().cognition_tick(self);
+
+        self.prune_edges();
+    }
+
 
     // ------------------------------------------------------------
     // Semantic + Episodic Ingestion (Tier‑3 MAX)
