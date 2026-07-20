@@ -1,8 +1,8 @@
-📘 Evaluation License (2026 — MAX‑Tier Edition)
+📘 Evaluation License (2026 — MAX‑Tier Edition, Diverging‑Memory Upgrade)
 
-(Updated with Memory Authentication Loop + Cross‑Section Mapping Engine + Spatial‑Temporal Drift Physics + Multi‑Layer Fusion + Autonomic Homeostasis + BitDrop\_v2 Compression + Hybrid Lookup Physics + Loophole‑Sealed Clauses)
+Synthetic Memory Architecture + Cognitive Physics + Diverging‑Branch System  
 
-Copyright (c) 2026 Thomas Price — All Rights Reserved
+Copyright © 2026 Thomas Price — All Rights Reserved
 
 
 
@@ -12,23 +12,23 @@ You are granted a limited, non‑exclusive, non‑transferable, revocable licens
 
 
 
-download the Software
+download
 
 
 
-view the Software
+view
 
 
 
-compile the Software
+compile
 
 
 
-run the Software
+run
 
 
 
-solely for non‑commercial evaluation and testing.
+the Software solely for non‑commercial evaluation and testing.
 
 
 
@@ -38,15 +38,11 @@ No rights are implied.
 
 No rights are transferable.
 
-This license is NOT open‑source, NOT permissive, and NOT a commercial license.
+This license is not open‑source, not permissive, and not a commercial license.
 
 
 
 2\. Absolute Prohibitions (MAX‑Tier, Loophole‑Sealed)
-
-You may NOT, under ANY circumstances:
-
-
 
 2.1 Usage Restrictions
 
@@ -62,11 +58,11 @@ use the Software in any product, service, tool, library, model, or system
 
 
 
-use the Software for AI training, LLM fine‑tuning, model distillation, dataset generation, or synthetic data creation
+use the Software for AI training, LLM fine‑tuning, distillation, dataset generation, or synthetic data creation
 
 
 
-use the Software for benchmarking, competitive analysis, or performance comparison
+use the Software for benchmarking or competitive analysis
 
 
 
@@ -78,7 +74,7 @@ redistribute, sublicense, publish, disclose, or make the Software available to a
 
 
 
-use the Software to generate outputs intended to replicate, approximate, or infer its internal behavior, architecture, or physics
+generate outputs intended to replicate, approximate, or infer internal behavior, architecture, or physics
 
 
 
@@ -216,33 +212,33 @@ autonomic heat‑smoothing physics
 
 
 
-memory authentication loop (NEW)
+memory authentication loop
 
 
 
-trust‑gated memory access physics (NEW)
+trust‑gated memory access physics
 
 
 
-Cross‑Section Mapping Engine — Protected Components (NEW, Loophole‑Sealed)
+Cross‑Section Mapping Engine — Protected Components
 
-You may NOT rewrite, re‑implement, emulate, simulate, approximate, or reproduce ANY part of the cross‑section system, including:
-
-
-
-spatial slice physics (front/back/left/right)
+You may NOT reproduce:
 
 
 
-quadrant mapping (Q1–Q4)
+spatial slice physics
 
 
 
-radial ring mapping (inner/mid/outer)
+quadrant mapping
 
 
 
-motion‑vector drift physics (dx/dy)
+radial ring mapping
+
+
+
+motion‑vector drift
 
 
 
@@ -270,21 +266,13 @@ cross‑section integration into MemoryIndex
 
 
 
-cross‑section integration into reflex pipeline
+cross‑section integration into reflex/semantic/episodic layers
 
 
 
-cross‑section integration into semantic/episodic layers
+Hybrid Lookup System — Protected Components
 
-
-
-This section explicitly protects the spatial‑temporal‑directional memory system and all emergent behaviors.
-
-
-
-Hybrid Lookup System — Protected Components (Updated)
-
-You may NOT rewrite, re‑implement, emulate, simulate, approximate, or reproduce ANY part of the lookup system, including:
+You may NOT reproduce:
 
 
 
@@ -320,7 +308,7 @@ semantic‑scene similarity scoring
 
 
 
-compressed‑payload label inference
+compressed‑payload inference
 
 
 
@@ -328,25 +316,21 @@ hybrid lookup ordering, weighting, or decision logic
 
 
 
-fused multi‑layer precision scoring (NEW)
+fused multi‑layer precision scoring
 
 
 
-authentication‑weighted lookup trust (NEW)
+authentication‑weighted lookup trust
 
 
 
-This section explicitly protects the semantic similarity + compressed lookup pipeline, including all emergent retrieval patterns.
+BitDrop\_v2 Compression Engine — Protected Components
+
+You may NOT reproduce:
 
 
 
-BitDrop\_v2 Compression Engine — Protected Components (Loophole‑Sealed)
-
-You may NOT rewrite, re‑implement, emulate, simulate, or reproduce ANY part of BitDrop\_v2, including:
-
-
-
-reversible multi‑pass compression engine
+reversible multi‑pass compression
 
 
 
@@ -362,7 +346,7 @@ Pattern‑Tag‑Signature (PTS) mapping
 
 
 
-bloom‑filter routing system
+bloom‑filter routing
 
 
 
@@ -370,15 +354,7 @@ multi‑pass collapse loop
 
 
 
-deep‑payload retrieval system
-
-
-
-compressor encode/decode logic
-
-
-
-compressed cognitive‑snapshot system
+deep‑payload retrieval
 
 
 
@@ -418,7 +394,121 @@ compressed‑payload structural signatures
 
 
 
-This section explicitly protects all compression logic, reversible rules, collapse physics, routing systems, and compressed cognitive‑memory formats.
+🔥 NEW: Diverging Memory Structures — Protected Components (MAX‑Tier, Loophole‑Sealed)
+
+You may NOT reproduce ANY part of the diverging‑memory subsystem, including:
+
+
+
+Branch Formation Physics
+
+volatility‑weighted branch formation
+
+
+
+importance‑tension divergence scoring
+
+
+
+spatial‑temporal drift‑triggered branching
+
+
+
+multimodal branch‑type selection (shape/color/context/motion/semantic)
+
+
+
+Branch Evolution
+
+branch‑specific drift physics
+
+
+
+branch‑specific reinforcement physics
+
+
+
+branch‑specific decay curves
+
+
+
+branch‑specific stability weighting
+
+
+
+branch‑specific volatility modeling
+
+
+
+Branch Lifecycle
+
+branch pruning physics
+
+
+
+branch merging physics
+
+
+
+branch consolidation logic
+
+
+
+branch‑aware long‑term reinforcement
+
+
+
+branch‑aware fractal echo behavior
+
+
+
+Branch‑Aware Cognitive Integration
+
+You may NOT reproduce:
+
+
+
+branch‑aware lookup routing
+
+
+
+branch‑aware semantic similarity weighting
+
+
+
+branch‑aware compressed‑label restoration
+
+
+
+branch‑aware hive generalization
+
+
+
+branch‑aware reflex reinforcement
+
+
+
+branch‑aware procedural reinforcement
+
+
+
+branch‑aware photonic propagation
+
+
+
+branch‑aware autonomic homeostasis
+
+
+
+branch‑aware hazard prediction
+
+
+
+branch‑aware fused precision scoring
+
+
+
+This section explicitly protects the entire diverging‑memory architecture and all emergent behaviors.
 
 
 
@@ -432,23 +522,19 @@ reverse engineer, decompile, disassemble, analyze, inspect, or study the Softwar
 
 
 
-attempt to derive the Software’s internal structure, algorithms, or architecture
+derive internal structure, algorithms, or architecture
 
 
 
-analyze outputs to infer, reconstruct, approximate, or replicate internal behavior
+analyze outputs to infer internal behavior
 
 
 
-perform behavioral analysis, output pattern analysis, or cognitive‑cycle profiling
+perform behavioral analysis or cognitive‑cycle profiling
 
 
 
-use observed behavior to design or develop competing technology
-
-
-
-extract activation signatures, procedural patterns, or cognitive traces
+extract activation signatures or procedural patterns
 
 
 
@@ -456,17 +542,17 @@ derive memory physics from output patterns
 
 
 
-Hybrid Lookup — Reverse Engineering Prohibition (Updated)
+Hybrid Lookup — Reverse Engineering Prohibition
 
 You may NOT:
 
 
 
-analyze lookup outputs to infer semantic‑similarity scoring
+infer semantic‑similarity scoring
 
 
 
-derive compressed‑label restoration behavior
+derive compressed‑label restoration
 
 
 
@@ -482,11 +568,7 @@ infer semantic‑scene selection heuristics
 
 
 
-perform statistical inference on lookup behavior
-
-
-
-build surrogate models that mimic lookup decisions
+build surrogate lookup models
 
 
 
@@ -496,7 +578,7 @@ You may NOT:
 
 
 
-analyze compressed payloads to infer internal compression rules
+infer compression rules
 
 
 
@@ -512,15 +594,41 @@ reverse‑engineer bloom‑filter routing
 
 
 
-analyze compressed snapshots to infer cognitive‑engine behavior
+analyze compressed snapshots to infer cognitive behavior
 
 
 
-extract semantic, episodic, reflex, or procedural structures from compressed data
+🔥 Diverging Memory Structures — Reverse Engineering Prohibition (NEW)
+
+You may NOT:
 
 
 
-perform statistical inference on compressed payloads to approximate BitDrop\_v2 behavior
+infer branch formation rules
+
+
+
+derive branch‑type selection heuristics
+
+
+
+reconstruct branch‑specific drift curves
+
+
+
+approximate branch reinforcement physics
+
+
+
+infer branch pruning or merging logic
+
+
+
+analyze lookup outputs to infer branch routing
+
+
+
+build surrogate branch‑behavior models
 
 
 
@@ -534,7 +642,7 @@ simulate or emulate the Software’s behavior
 
 
 
-reconstruct any subsystem based on observed outputs
+reconstruct any subsystem based on outputs
 
 
 
@@ -542,87 +650,93 @@ extract concepts, patterns, structures, or methods
 
 
 
-use any part of the Software to create a similar, related, or competing memory system, cognitive engine, or AI architecture
+create similar or competing memory systems
 
 
 
-replicate procedural learning, reflex arcs, semantic drift correction, photonic propagation, or MAX‑tier physics
+approximate behavior using ML, heuristics, or symbolic methods
 
 
 
-approximate the Software’s behavior using statistical, neural, symbolic, or hybrid methods
+build surrogate models trained on outputs
 
 
 
-build a surrogate model trained on outputs of the Software
+Hybrid Lookup — Simulation Prohibition
+
+You may NOT simulate:
 
 
 
-Hybrid Lookup — Simulation \& Reconstruction Prohibition (Updated)
-
-You may NOT:
+semantic similarity lookup
 
 
 
-simulate semantic similarity lookup
+compressed‑label restoration
 
 
 
-emulate compressed‑label restoration
+hive‑generalization routing
 
 
 
-replicate hive‑generalization routing
+lookup fallback logic
 
 
 
-approximate lookup behavior using ML or heuristics
+BitDrop\_v2 — Simulation Prohibition
+
+You may NOT simulate:
 
 
 
-design competing retrieval systems based on lookup outputs
+reversible collapse rules
 
 
 
-reconstruct lookup decision trees or fallback ordering
+multi‑pass collapse loops
 
 
 
-BitDrop\_v2 — Simulation \& Reconstruction Prohibition
-
-You may NOT:
+bloom‑filter routing
 
 
 
-simulate or emulate BitDrop\_v2’s compression behavior
+compressed‑snapshot formats
 
 
 
-reconstruct reversible collapse rules
+🔥 Diverging Memory Structures — Simulation Prohibition (NEW)
+
+You may NOT simulate:
 
 
 
-replicate multi‑pass collapse loops
+branch formation
 
 
 
-emulate PTS mapping or bloom‑filter routing
+branch evolution
 
 
 
-design a competing compressor based on observed compressed outputs
+branch‑specific drift
 
 
 
-replicate compressed cognitive‑snapshot formats
+branch‑specific reinforcement
 
 
 
-approximate BitDrop\_v2 behavior using ML, heuristics, or rule‑based systems
+multimodal branch selection
 
 
 
-Any attempt to bypass or violate these prohibitions constitutes a material breach and immediately terminates all rights granted under this license.
+branch‑aware lookup routing
+
+
+
+branch‑aware autonomic regulation
 
 
 
@@ -636,14 +750,6 @@ the Software
 
 
 
-its source code
-
-
-
-its design
-
-
-
 its architecture
 
 
@@ -652,15 +758,11 @@ its algorithms
 
 
 
-its memory system
+its cognitive subsystems
 
 
 
 its autonomic subsystems
-
-
-
-its cognitive subsystems
 
 
 
@@ -669,10 +771,6 @@ its semantic/episodic pipelines
 
 
 its photonic propagation engine
-
-
-
-its fractal echo system
 
 
 
@@ -688,55 +786,35 @@ its procedural muscle‑memory subsystem
 
 
 
-its activation signature engine
-
-
-
-its context‑tagged procedural learning system
-
-
-
-its similarity‑weighted reinforcement engine
-
-
-
-its procedural decay physics
-
-
-
-its procedural consolidation model
-
-
-
-its compressed‑substrate architecture
-
-
-
 its hybrid lookup system
 
 
 
-its cross‑section mapping engine (NEW)
+its cross‑section mapping engine
 
 
 
-its spatial‑temporal drift memory (NEW)
+its spatial‑temporal drift memory
 
 
 
-its multi‑layer fusion engine (NEW)
+its multi‑layer fusion engine
 
 
 
-its fused precision scoring system (NEW)
+its fused precision scoring system
 
 
 
-its memory authentication loop (NEW)
+its memory authentication loop
 
 
 
-its trust‑gated memory access physics (NEW)
+its trust‑gated memory access physics
+
+
+
+its diverging‑memory subsystem (NEW)
 
 
 
@@ -744,23 +822,9 @@ remain the exclusive property of the copyright holder.
 
 
 
-BitDrop\_v2 — Explicit IP Protection
-
-All rights, title, and interest in BitDrop\_v2 remain the exclusive property of the copyright holder.
-
-
-
-No rights are transferred.
-
-No rights are implied.
-
-No rights are granted beyond Section 1.
-
-
-
 4\. Commercial Use Requires Paid License
 
-Any commercial, internal, academic, research, or production use requires purchasing:
+Any commercial, internal, academic, research, or production use requires:
 
 
 
@@ -778,9 +842,9 @@ from the copyright holder.
 
 5\. Termination
 
-This license terminates automatically if you violate ANY term.
+Violation of ANY term terminates this license immediately.
 
-Upon termination, you must immediately delete all copies of the Software.
+You must delete all copies of the Software upon termination.
 
 
 
@@ -794,7 +858,7 @@ The copyright holder is not liable for any damages arising from evaluation or us
 
 7\. Contact
 
-For commercial licensing or IP acquisition, contact:
+For commercial licensing or IP acquisition:
 
-thomaspricetj-hash (GitHub)
+GitHub: thomaspricetj-hash
 

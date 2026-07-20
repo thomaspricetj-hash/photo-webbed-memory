@@ -34,6 +34,24 @@ pub struct FractalEchoEvent {
     pub echo_strength: f32,
 }
 
+/// Diverging branch kinds for visual memory
+#[derive(Debug, Clone, Copy)]
+pub enum BranchKind {
+    Shape,
+    Color,
+    Context,
+    Motion,
+    Semantic,
+}
+
+/// Diverging branch event: node splits into a new branch interpretation
+#[derive(Debug, Clone)]
+pub struct DivergingBranchEvent {
+    pub id: NodeId,
+    pub branch_kind: BranchKind,
+    pub divergence_score: f32,
+}
+
 /// Memory Consolidation Engine
 #[derive(Debug, Clone)]
 pub struct MemoryConsolidationEngine {
@@ -240,13 +258,112 @@ impl FractalEchoEngine {
     }
 }
 
-/// High-level cognition pass: consolidation + drift + clustering + fractal echo
+/// Diverging Branch Engine
+/// - identifies nodes that should split into multiple visual/cognitive interpretations
+#[derive(Debug, Clone)]
+pub struct DivergingBranchEngine {
+    pub divergence_threshold: f32,
+    pub volatility_threshold: f32,
+    pub max_branches_per_tick: usize,
+}
+
+impl DivergingBranchEngine {
+    pub fn new() -> Self {
+        Self {
+            divergence_threshold: 0.65,
+            volatility_threshold: 0.35,
+            max_branches_per_tick: 32,
+        }
+    }
+
+    pub fn diverge(&self, engine: &mut MemoryEngine) -> Vec<DivergingBranchEvent> {
+        let mut events = Vec::new();
+
+        let ids: Vec<NodeId> = engine.states.keys().copied().collect();
+        if ids.is_empty() {
+            return events;
+        }
+
+        // Sort by "tension" between importance and stability:
+        // high importance + mid/low stability → good divergence candidates.
+        let mut scored: Vec<(NodeId, f32)> = ids
+            .iter()
+            .map(|id| {
+                let state = &engine.states[id];
+                let volatility = 1.0 - state.stability;
+                let tension = (state.importance / 10.0) * volatility;
+                (*id, tension)
+            })
+            .collect();
+
+        scored.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap_or(std::cmp::Ordering::Equal));
+
+        let mut branch_count = 0;
+
+        for (id, tension) in scored {
+            if branch_count >= self.max_branches_per_tick {
+                break;
+            }
+
+            if tension < self.divergence_threshold {
+                continue;
+            }
+
+            let state = match engine.states.get_mut(&id) {
+                Some(s) => s,
+                None => continue,
+            };
+
+            let volatility = 1.0 - state.stability;
+            if volatility < self.volatility_threshold {
+                continue;
+            }
+
+            // Decide branch kind based on relative weights of heat + importance.
+            let short = state.heat.short_term;
+            let long = state.heat.long_term;
+            let importance = state.importance;
+
+            let branch_kind = if short > long && importance > 5.0 {
+                BranchKind::Motion
+            } else if long > short && importance > 5.0 {
+                BranchKind::Context
+            } else if importance >= 7.5 {
+                BranchKind::Semantic
+            } else if short >= long {
+                BranchKind::Shape
+            } else {
+                BranchKind::Color
+            };
+
+            let divergence_score = tension;
+
+            // Slightly adjust state to reflect branching pressure without breaking existing behavior.
+            state.stability *= f32::exp(-0.03 * divergence_score);
+            state.heat.short_term *= 1.0 + 0.05 * divergence_score;
+            state.heat.long_term *= 1.0 + 0.03 * divergence_score;
+
+            events.push(DivergingBranchEvent {
+                id,
+                branch_kind,
+                divergence_score,
+            });
+
+            branch_count += 1;
+        }
+
+        events
+    }
+}
+
+/// High-level cognition pass: consolidation + drift + clustering + fractal echo + divergence
 #[derive(Debug, Clone)]
 pub struct MemoryCognitionEngine {
     pub consolidation: MemoryConsolidationEngine,
     pub drift: MemoryDriftEngine,
     pub clustering: MemoryClusteringEngine,
     pub fractal_echo: FractalEchoEngine,
+    pub divergence: DivergingBranchEngine,
 }
 
 impl MemoryCognitionEngine {
@@ -256,6 +373,7 @@ impl MemoryCognitionEngine {
             drift: MemoryDriftEngine::new(),
             clustering: MemoryClusteringEngine::new(cluster_count),
             fractal_echo: FractalEchoEngine::new(),
+            divergence: DivergingBranchEngine::new(),
         }
     }
 
@@ -264,6 +382,7 @@ impl MemoryCognitionEngine {
         let _ = self.drift(engine);
         let _ = self.cluster(engine);
         let _ = self.fractal_echo.echo(engine);
+        let _ = self.divergence.diverge(engine);
     }
 
     pub fn consolidate(&self, engine: &mut MemoryEngine) -> Vec<ConsolidationEvent> {
@@ -278,4 +397,5 @@ impl MemoryCognitionEngine {
         self.clustering.cluster(engine)
     }
 }
+
 

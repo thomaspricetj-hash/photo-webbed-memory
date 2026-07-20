@@ -90,7 +90,7 @@ These additions provide drift‑resistant retrieval, spatial‑aware reasoning, 
 
 
 
-BitDrop\_v2 provides reversible, multi‑pass, pattern‑tagged compression for semantic graphs, episodic traces, procedural signatures, and full memory snapshots. This enables efficient persistence, fast retrieval, and long‑term cognitive coherence.
+BitDrop\_v2 provides reversible, multi‑pass, pattern‑tagged compression for semantic graphs, episodic traces, procedural signatures, and full memory snapshots — enabling efficient persistence, fast retrieval, and long‑term cognitive coherence.
 
 
 
@@ -160,7 +160,7 @@ hybrid semantic + compressed lookup
 
 
 
-trust‑gated memory authentication (new)
+trust‑gated memory authentication
 
 
 
@@ -218,7 +218,7 @@ temporal stability
 
 
 
-authentication‑validated trust score (new)
+authentication‑validated trust score
 
 
 
@@ -232,19 +232,19 @@ The engine performs multi‑tier lookup:
 
 
 
-Direct Label Match
+direct label match
 
 
 
-Hive Generalization
+hive generalization
 
 
 
-Vector‑Based Semantic Similarity
+vector‑based semantic similarity
 
 
 
-BitDrop\_v2 Compressed Label Restoration
+BitDrop\_v2 compressed label restoration
 
 
 
@@ -252,11 +252,11 @@ This enables retrieval even when:
 
 
 
-labels drift semantically
+labels drift
 
 
 
-memory is partially compressed
+memory is compressed
 
 
 
@@ -334,7 +334,7 @@ importance weighting
 
 
 
-authentication‑validated trust (new)
+authentication‑validated trust
 
 
 
@@ -376,19 +376,19 @@ Each node stores:
 
 
 
-spatial slices: front/back/left/right
+spatial slices
 
 
 
-quadrants: Q1–Q4
+quadrants
 
 
 
-radial rings: inner/mid/outer
+radial rings
 
 
 
-motion‑vector drift: dx/dy
+drift vectors
 
 
 
@@ -466,7 +466,7 @@ Episodic traces are compressed using BitDrop\_v2.
 
 4.3 Semantic Similarity Lookup (New)
 
-Vector embeddings allow:
+Embeddings enable:
 
 
 
@@ -560,7 +560,7 @@ drift‑aware reflex prediction
 
 
 
-authentication‑validated reflex trust (new)
+authentication‑validated reflex trust
 
 
 
@@ -686,7 +686,7 @@ Fused Multi‑Layer Precision Scoring
 
 
 
-Memory Authentication Loop (new)
+Memory Authentication Loop
 
 
 

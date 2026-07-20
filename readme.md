@@ -4,7 +4,7 @@ A Rust‑based cognitive memory engine for synthetic cognition, emergent reasoni
 
 Photo‑Webbed Core is a MAX‑tier cognitive memory architecture built around:
 
-a dynamic 3D cognitive graph
+dynamic 3D cognitive graph
 
 dual‑layer heatmaps
 
@@ -34,6 +34,8 @@ memory authentication loop (NEW)
 
 Tier‑4 hybrid lookup (semantic + compressed + hive + vector)
 
+diverging memory structures (NEW) ← your new upgrade
+
 It provides a foundation for synthetic cognition, emergent reasoning, and memory‑driven agents.
 
 🚀 Features
@@ -52,14 +54,13 @@ hive‑bias
 
 scene
 
-Semantic decay & promotion (decay() + promote())
+Semantic decay & promotion
 
 Episodic memory with contextual tagging + compressed summaries
 
 Summary nodes as long‑term semantic anchors
 
 Memory Authentication Loop (NEW)
-
 stability validation
 
 importance validation
@@ -72,18 +73,57 @@ long‑term heat reinforcement
 
 trust‑gated memory access
 
+Diverging Memory Structures (NEW)
+Nodes now dynamically branch into multiple interpretations when volatility, importance tension, or spatial‑temporal drift exceed thresholds.
+
+Branches include:
+
+shape‑branch
+
+color‑branch
+
+context‑branch
+
+motion‑branch
+
+semantic‑branch
+
+Each branch evolves independently with:
+
+branch‑specific drift
+
+branch‑specific reinforcement
+
+branch pruning
+
+branch merging
+
+multimodal branch weighting
+
+This enables:
+
+parallel reasoning
+
+ambiguity‑aware memory
+
+multimodal divergence
+
+human‑like memory evolution
+
+drift‑resistant visual + semantic recall
+
 ⚡ Reflex Subsystem
 Instant stimulus → response activation
 
-Reflex strength modeling (0.0–1.0)
+Reflex strength modeling
 
 Reflex heat + stability shaping
 
 Reflex usage tracking
 
-Reflex learning (Hebbian‑style strengthening)
+Hebbian‑style reflex learning
 
-Reflex decay when unused
+Reflex decay
 
 Reflex generalization (“dog” → “animal”)
 
@@ -92,166 +132,135 @@ Reflex‑biased photonic propagation
 Reflex nodes promoted to long‑term anchors
 
 Stability‑weighted reflex trust (NEW)
-
 Directional reflex weighting via cross‑sections (NEW)
+Branch‑aware reflex reinforcement (NEW)
+Reflex arcs now reinforce the correct branch of a diverged memory node.
 
 🐝 WordHive Semantic Engine
-Word statistics: frequency, co‑occurrence, importance
+Word statistics
 
-Semantic clusters (WordCluster)
+Semantic clusters
 
-Hive cells (HiveCell) for higher‑order semantic hubs
+Hive cells
 
-Bias propagation (bias_propagation(&label))
+Bias propagation
 
-Generalization (generalize_word(&summary))
+Generalization
 
-Cluster rebuild cycles integrated into decay ticks
+Cluster rebuild cycles
 
 Semantic correlation + cluster‑level reasoning
 
 Cluster‑stable lookup weighting (NEW)
+Branch‑aware semantic reinforcement (NEW)
+Semantic clusters now stabilize diverged branches that align with cluster‑level meaning.
 
 🌐 Photonic Propagation Engine
-Wave‑based activation propagation
+Wave‑based propagation
 
-Interference modeling across the graph
+Interference modeling
 
-Resonance‑driven memory boosting
+Resonance‑driven boosting
 
-Hybrid propagation integrating heat, reflex, and semantic layers
+Hybrid propagation across heat, reflex, semantic layers
 
-Summary nodes participate in propagation cycles
+Summary nodes participate
 
-Reflex nodes bias amplitude + resonance
+Reflex nodes bias amplitude
 
 Resonance‑weighted lookup scoring (NEW)
+Branch‑sensitive photonic propagation (NEW)
+Photonic waves now propagate differently across diverged branches.
 
 🔗 Dynamic Graph Engine
-Spatial nodes with 3D cognitive geometry
+3D cognitive geometry
 
-Edge lifecycle: reinforcement, decay, pruning
+Edge reinforcement, decay, pruning
 
-Automatic link formation via cognition subsystems
+Automatic link formation
 
-Concept nodes derived from semantic scenes
+Concept nodes from semantic scenes
 
 Summary nodes linked to high‑salience entities
 
 Cross‑Section Mapping (NEW)
-
 front/back/left/right slices
 
-quadrant mapping (Q1–Q4)
+quadrant mapping
 
-radial rings (inner/mid/outer)
+radial rings
 
 motion‑vector drift
 
 temporal stability scoring
 
-⚡ NEW: Procedural Muscle‑Memory System (MAX‑Tier)
-A full procedural learning subsystem modeled after biological muscle memory.
+Branch‑aware graph evolution (NEW)
+Graph edges now evolve differently per branch.
 
-Capabilities
+⚡ Procedural Muscle‑Memory System (MAX‑Tier)
 Learns repeated activation patterns
 
-Stores compressed signatures of behavior
+Stores compressed signatures
 
 Reinforces patterns based on similarity
 
-Decays unused procedural traces
+Decays unused routines
 
 Prunes dead routines
 
-Context‑tagged procedural learning (lane‑aware)
+Context‑tagged procedural learning
 
-Integrates with reflex, semantic, and photonic layers
+Integrates with reflex, semantic, photonic layers
 
 Autopilot‑driven reinforcement + decay
 
-Enables fast‑path procedural activation
+Branch‑aligned procedural reinforcement (NEW)
+Procedural memory strengthens the correct branch of diverged nodes.
 
-Impact
-Faster reaction loops
-
-More stable behavior
-
-Automatic learned routines
-
-Reduced cognitive load on semantic engine
-
-Higher consistency across repeated tasks
-
-True procedural cognition
-
-This subsystem elevates Photo‑Webbed Core into a full cognitive stack.
-
-🔍 NEW: MAX‑Tier Hybrid Lookup System
+🔍 MAX‑Tier Hybrid Lookup System
 (Semantic Similarity + Compressed Lookup + Hive Generalization + Vector Similarity)
-Photo‑Webbed Core now includes a Tier‑4 hybrid lookup engine capable of retrieving concepts even under drift, compression, mutation, or partial recall.
 
-Lookup Pipeline
+Lookup Pipeline:
+
 Direct Label Match
 
-Hive Generalization (WordHive semantic clusters)
+Hive Generalization
 
 Vector‑Based Semantic Similarity
 
-embedding‑based similarity
-
-finds closest semantic scene
-
-selects most salient node
-
 BitDrop_v2 Compressed Label Restoration
 
-compress label → decompress → restore
-
-match restored label to graph nodes
-
-Impact
-Drift‑resistant recall
-
-Compression‑aware retrieval
-
-Fuzzy semantic matching
-
-Robust long‑term stability
-
-Meaning‑anchored lookup across the entire cognitive substrate
-
 Spatial‑temporal precision weighting (NEW)
-
 Authentication‑validated trust scoring (NEW)
-
-This lookup system is now a core part of reflex activation, semantic ingestion, procedural learning, and autonomic homeostasis.
+Branch‑aware lookup routing (NEW)
+Lookup now selects the correct branch of a diverged node based on semantic, spatial, and temporal cues.
 
 🔁 Memory Cognition Subsystems
-Consolidation Engine — stabilizes resonant nodes
+Consolidation Engine
 
-Drift Engine — models forgetting + concept drift
+Drift Engine
 
-Clustering Engine — forms semantic groups
+Clustering Engine
 
-Fractal Echo Engine — reinforces repeating activation rhythms
+Fractal Echo Engine
 
-Cognition Cycle Engine — orchestrates full memory dynamics
+Cognition Cycle Engine
 
-Reflex Engine — fast‑path activation + learning + decay
+Reflex Engine
 
-Procedural Engine — learns repeated activation patterns
+Procedural Engine
 
-Cross‑Section Engine (NEW)
+Cross‑Section Engine
 
-Memory Authentication Engine (NEW)
+Memory Authentication Engine
+
+Diverging Branch Engine (NEW) ← your new subsystem
 
 🔄 Full Cognitive Cycle (Updated)
-Code
 Stimulus
-→ Reflex Activation (fast path)
-→ Hive Bias Propagation
-→ Procedural Muscle Memory Activation (MAX‑Tier)
+→ Reflex Activation
+→ Hive Bias
+→ Procedural Activation
 → Graph Activation
 → Photonic Propagation
 → Interference
@@ -264,54 +273,57 @@ Stimulus
 → Episodic Storage
 → Summary Anchoring
 → Recall
-→ Hybrid Lookup (MAX‑Tier)
-→ Cross‑Section Mapping (NEW)
-→ Spatial‑Temporal Drift Integration (NEW)
-→ Fused Multi‑Layer Precision Scoring (NEW)
-→ Memory Authentication Loop (NEW)
-Reflex + hive bias + procedural memory now occur before normal activation, biasing the entire cycle toward meaning‑anchored, behavior‑anchored, spatially coherent recall.
+→ Hybrid Lookup
+→ Cross‑Section Mapping
+→ Spatial‑Temporal Drift Integration
+→ Fused Multi‑Layer Precision Scoring
+→ Memory Authentication Loop
+→ Diverging Branch Formation (NEW)  
+→ Branch Reinforcement + Pruning (NEW)
+
+Reflex + hive bias + procedural memory now bias the entire cycle toward meaning‑anchored, behavior‑anchored, spatially coherent, branch‑correct recall.
 
 🧠 Autopilot System (v1 + v2 + Autonomic Homeostasis)
 Autopilot v1
-Importance rebalance
+importance rebalance
 
-High‑value reinforcement
+high‑value reinforcement
 
-Soft pruning of low‑value nodes
+soft pruning
 
-Hive rebuild
+hive rebuild
 
-Index rebuild
+index rebuild
 
 Autopilot v2 (MAX‑Tier)
-Predictive reinforcement
+predictive reinforcement
 
-Adaptive decay curves
+adaptive decay
 
-Cluster‑level resonance propagation
+cluster‑level resonance
 
-Procedural reinforcement + decay
+procedural reinforcement
 
 Autonomic Memory Homeostasis (NEW)
-A synthetic “autonomic nervous system” regulating memory health:
+memory pressure detection
 
-Memory pressure detection
+semantic drift correction
 
-Semantic drift correction
+reflex load balancing
 
-Reflex load balancing
+procedural load balancing
 
-Procedural load balancing
+global heat smoothing
 
-Global heat smoothing
+compression‑triggering
 
-Compression‑triggering via BitDrop_v2
+autonomic snapshot logging
 
-Autonomic snapshot logging
+authentication‑validated trust
 
-Authentication‑validated memory trust (NEW)
+spatial‑temporal drift correction
 
-Spatial‑temporal drift correction (NEW)
+branch‑aware autonomic regulation (NEW)
 
 Lookup is now part of autonomic regulation, enabling:
 
@@ -327,6 +339,8 @@ spatial‑aware hazard prediction
 
 trust‑gated memory access
 
+branch‑correct memory stabilization (NEW)
+
 📘 Summary‑Based Memory
 Each ingested scene generates a summary node:
 
@@ -340,8 +354,10 @@ strongly activated for long‑term stability
 
 participates in photonic propagation
 
-stabilized via authentication loop (NEW)
+stabilized via authentication loop
 
-spatial‑temporal anchored (NEW)
+spatial‑temporal anchored
 
-This provides human‑like gist‑based memory, where meaning becomes the anchor for long‑term recall and cognitive routing.
+branch‑aware summary reinforcement (NEW)
+
+Summary nodes now stabilize the correct branch of diverged memory nodes, enabling human‑like gist‑based recall.
