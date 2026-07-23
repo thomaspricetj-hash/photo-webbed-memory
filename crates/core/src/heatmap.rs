@@ -213,4 +213,61 @@ impl HeatLayer {
         self.clamp();
         self.denoise();
     }
+
+    // ============================================================
+    // 🔥 Tier‑7 Roundabout Routing Additive Logic
+    // ============================================================
+
+    /// Compute directional stability for roundabout routing.
+    /// High stability + low drift = strong routing candidate.
+    pub fn roundabout_direction_score(&self) -> f32 {
+        let drift_mag = (self.drift_dx.abs() + self.drift_dy.abs()).min(1.0);
+        let drift_penalty = 1.0 / (1.0 + drift_mag * 1.25);
+
+        let spatial =
+            (self.front + self.back + self.left + self.right) * 0.25;
+
+        let quadrant =
+            (self.q1 + self.q2 + self.q3 + self.q4) * 0.25;
+
+        let radial =
+            (self.inner * 0.4) + (self.mid * 0.35) + (self.outer * 0.25);
+
+        let stability = self.stability * 0.65 + self.temporal_stability * 0.35;
+
+        let score =
+            stability * 0.45 +
+            spatial * 0.20 +
+            quadrant * 0.15 +
+            radial * 0.20;
+
+        score * drift_penalty
+    }
+
+    /// Compute heat‑fusion score for roundabout exit ranking.
+    pub fn roundabout_heat_fusion(&self) -> f32 {
+        let cognitive =
+            self.short_term * 0.55 +
+            self.long_term * 0.35 +
+            self.resonance * 0.30 +
+            self.inertia * 0.20 -
+            self.volatility * 0.15;
+
+        let spatial =
+            (self.front + self.back + self.left + self.right) * 0.25;
+
+        let drift_mag = (self.drift_dx.abs() + self.drift_dy.abs()).min(1.0);
+        let drift_penalty = 1.0 / (1.0 + drift_mag * 0.75);
+
+        let fused = cognitive * 0.6 + spatial * 0.4;
+        fused * drift_penalty
+    }
+
+    /// Full roundabout score combining direction + heat fusion.
+    pub fn roundabout_score(&self) -> f32 {
+        let dir = self.roundabout_direction_score();
+        let heat = self.roundabout_heat_fusion();
+        (dir * 0.55) + (heat * 0.45)
+    }
 }
+

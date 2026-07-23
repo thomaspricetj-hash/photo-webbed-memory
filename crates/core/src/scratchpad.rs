@@ -125,6 +125,22 @@ pub struct Scratchpad {
 
     /// Global importance (0–10): average importance across all lanes
     pub global_importance: f32,
+
+    // ---------------------------------------------------------
+    // Tier‑7 Roundabout Routing State (visual + semantic)
+    // ---------------------------------------------------------
+
+    /// Global circulation counter: how many times packets have looped in roundabout
+    pub circulations: u32,
+
+    /// Exit attempt counts: (from, to) -> attempts
+    pub exit_attempts: HashMap<(NodeId, NodeId), u32>,
+
+    /// Zone bias memory: lane/zone label -> bias factor
+    pub zone_bias: HashMap<String, f32>,
+
+    /// Heatmap routing hints: lane/zone label -> heatmap weight
+    pub heatmap_hints: HashMap<String, f32>,
 }
 
 impl Scratchpad {
@@ -137,6 +153,10 @@ impl Scratchpad {
             tags: Vec::new(),
             global_resonance: 0.0,
             global_importance: 0.0,
+            circulations: 0,
+            exit_attempts: HashMap::new(),
+            zone_bias: HashMap::new(),
+            heatmap_hints: HashMap::new(),
         }
     }
 
@@ -207,6 +227,9 @@ impl Scratchpad {
         for lane in self.lanes.values_mut() {
             lane.decay(dt);
         }
+
+        // Tier‑7: roundabout state decay
+        self.decay_roundabout(dt);
     }
 
     /// Export scratchpad view for visualization
@@ -227,5 +250,88 @@ impl Scratchpad {
         }
 
         out
+    }
+
+    // ---------------------------------------------------------
+    // Tier‑7 Roundabout Helpers: production-grade routing memory
+    // ---------------------------------------------------------
+
+    /// Register a roundabout circulation event
+    pub fn register_circulation(&mut self) {
+        self.circulations = self.circulations.saturating_add(1);
+    }
+
+    /// Register an exit attempt between two nodes
+    pub fn register_exit_attempt(&mut self, from: NodeId, to: NodeId) {
+        let key = (from, to);
+        let entry = self.exit_attempts.entry(key).or_insert(0);
+        *entry = entry.saturating_add(1);
+    }
+
+    /// Register a successful, stable exit between two nodes
+    pub fn register_exit_success(&mut self, from: NodeId, to: NodeId, lane: &str) {
+        let key = (from, to);
+        let entry = self.exit_attempts.entry(key).or_insert(0);
+        *entry = entry.saturating_add(2);
+
+        // Reinforce zone bias for this lane
+        let zb = self.zone_bias.entry(lane.to_string()).or_insert(1.0);
+        *zb = (*zb + 0.03).min(1.8);
+
+        // Reinforce heatmap hint for this lane
+        let hb = self.heatmap_hints.entry(lane.to_string()).or_insert(0.0);
+        *hb = (*hb + 0.02).min(1.0);
+    }
+
+    /// Get zone bias for a given lane/zone label
+    pub fn get_zone_bias(&self, lane: &str) -> f32 {
+        self.zone_bias.get(lane).copied().unwrap_or(1.0)
+    }
+
+    /// Get heatmap routing hint for a given lane/zone label
+    pub fn get_heatmap_hint(&self, lane: &str) -> f32 {
+        self.heatmap_hints.get(lane).copied().unwrap_or(0.0)
+    }
+
+    /// Decay roundabout routing state (Tier‑7)
+    fn decay_roundabout(&mut self, dt: f32) {
+        // Circulation soft decay
+        if self.circulations > 0 {
+            let decay_factor = f32::exp(-0.001 * dt);
+            let new_val = (self.circulations as f32 * decay_factor).floor() as u32;
+            self.circulations = new_val;
+        }
+
+        // Zone bias decay
+        for bias in self.zone_bias.values_mut() {
+            *bias *= f32::exp(-0.002 * dt);
+            if *bias < 1.0 {
+                *bias = 1.0;
+            }
+        }
+
+        // Heatmap hint decay
+        for hint in self.heatmap_hints.values_mut() {
+            *hint *= f32::exp(-0.003 * dt);
+            if *hint < 0.0 {
+                *hint = 0.0;
+            }
+        }
+
+        // Exit attempts soft decay
+        let mut to_clear = Vec::new();
+        for (key, count) in self.exit_attempts.iter_mut() {
+            if *count > 0 {
+                let decay_factor = f32::exp(-0.004 * dt);
+                let new_val = (*count as f32 * decay_factor).floor() as u32;
+                *count = new_val;
+            }
+            if *count == 0 {
+                to_clear.push(*key);
+            }
+        }
+        for key in to_clear {
+            self.exit_attempts.remove(&key);
+        }
     }
 }

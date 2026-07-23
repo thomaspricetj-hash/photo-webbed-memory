@@ -113,13 +113,56 @@ impl MemoryLinker {
             + self.score_resonance(engine, a, b)
     }
 
-    /// Try to form or reinforce a link between two nodes (Tier‑3)
+    // ---------------------------------------------------------
+    // Tier‑7 Roundabout Routing: stability‑first link selection
+    // ---------------------------------------------------------
+    fn roundabout_route(
+        &self,
+        engine: &MemoryEngine,
+        a: NodeId,
+        b: NodeId,
+        raw_score: f32,
+    ) -> f32 {
+        let sa = &engine.states[&a];
+        let sb = &engine.states[&b];
+
+        // 1. Drift penalty (Tier‑7) — use heat drift vector magnitude
+        let drift_a = (sa.heat.drift_dx.abs() + sa.heat.drift_dy.abs()).min(1.0);
+        let drift_b = (sb.heat.drift_dx.abs() + sb.heat.drift_dy.abs()).min(1.0);
+        let drift = (drift_a - drift_b).abs();
+        let drift_penalty = 1.0 / (1.0 + drift * 0.15);
+
+        // 2. Stability gate (Tier‑7)
+        let stability_gate = ((sa.stability + sb.stability) * 0.5).min(1.0);
+
+        // 3. Heatmap bias (Tier‑7)
+        let ha = sa.heat.long_term;
+        let hb = sb.heat.long_term;
+        let heat_bias = 1.0 + ((ha + hb) * 0.12);
+
+        // 4. Circulation logic (Tier‑7)
+        let mut circulation_boost = 1.0;
+        if raw_score < self.threshold {
+            circulation_boost = 1.0 + (engine.scratchpad.circulations as f32 * 0.05);
+        }
+
+        // 5. Polygon / semantic zone bias (Tier‑7)
+        let na = &engine.graph.nodes[&a];
+        let nb = &engine.graph.nodes[&b];
+        let zone_bias = if na.zone == nb.zone { 1.25 } else { 0.85 };
+
+        // Final roundabout score
+        raw_score * drift_penalty * stability_gate * heat_bias * circulation_boost * zone_bias
+    }
+
+    /// Try to form or reinforce a link between two nodes (Tier‑3 + Tier‑7 Roundabout)
     pub fn try_link(&self, engine: &mut MemoryEngine, a: NodeId, b: NodeId) -> Option<LinkEvent> {
         if a == b {
             return None;
         }
 
-        let score = self.score_link(engine, a, b);
+        let raw_score = self.score_link(engine, a, b);
+        let score = self.roundabout_route(engine, a, b, raw_score);
         if score < self.threshold {
             return None;
         }
@@ -221,4 +264,3 @@ impl MemoryLinker {
         }
     }
 }
-

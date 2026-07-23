@@ -384,6 +384,68 @@ impl SemanticEngine {
     }
 
     // ------------------------------------------------------------
+    // Tier‑7 Roundabout Episodic Geometry (additive)
+    // ------------------------------------------------------------
+
+    pub fn roundabout_scene_score(&self, scene_id: u64) -> f32 {
+        let Some(ep) = self.episodes.get(&scene_id) else {
+            return 0.0;
+        };
+
+        let g = &ep.graph;
+        let mut score = 0.0;
+
+        // Recency bias
+        let now = Self::now_ts();
+        let age = now.saturating_sub(g.timestamp) as f32;
+        let recency = 1.0 / (1.0 + age * 0.0005);
+
+        // Context richness
+        let ctx = &g.context;
+        let mut ctx_score = 0.0;
+        if ctx.location.is_some() {
+            ctx_score += 0.15;
+        }
+        if ctx.time_of_day.is_some() {
+            ctx_score += 0.10;
+        }
+        if ctx.mood.is_some() {
+            ctx_score += 0.15;
+        }
+        ctx_score += (ctx.tags.len() as f32).min(12.0) * 0.02;
+
+        // Structural density
+        let node_count = g.nodes.len() as f32;
+        let rel_count = g.relations.len() as f32;
+        let density = (node_count * 0.03) + (rel_count * 0.02);
+
+        score = recency * 0.6 + ctx_score * 0.25 + density * 0.15;
+        score
+    }
+
+    pub fn roundabout_transition_score(&self, from_scene: u64, to_scene: u64) -> f32 {
+        let Some(ep) = self.episodes.get(&from_scene) else {
+            return 0.0;
+        };
+
+        let mut strength_sum = 0.0;
+        let mut count = 0.0;
+
+        for link in ep.temporal_links.iter() {
+            if link.to_scene_id == to_scene {
+                strength_sum += link.strength;
+                count += 1.0;
+            }
+        }
+
+        if count == 0.0 {
+            0.0
+        } else {
+            (strength_sum / count).min(1.0)
+        }
+    }
+
+    // ------------------------------------------------------------
     // Helpers
     // ------------------------------------------------------------
 
@@ -629,9 +691,17 @@ impl MemoryEngine {
         }
     }
 
+    fn apply_roundabout_bias(&self, hits: &mut Vec<MemoryHit>) {
+        for h in hits.iter_mut() {
+            let geom = self.semantic.roundabout_scene_score(h.scene_id);
+            let boost = 1.0 + geom * 0.25;
+            h.score *= boost;
+        }
+    }
+
     pub fn hybrid_search(&self, query: &str, top_k: usize) -> Vec<MemoryHit> {
         // Episodic: keyword in compressed summary
-        let episodic_hits: Vec<MemoryHit> = self
+        let mut episodic_hits: Vec<MemoryHit> = self
             .semantic
             .recall_by_keyword(query)
             .into_iter()
@@ -662,10 +732,10 @@ impl MemoryEngine {
         }
 
         // Vector: embedding similarity
-        let vector_hits = self.semantic.vector_search(query, top_k);
+        let mut vector_hits = self.semantic.vector_search(query, top_k);
 
         // Reflex: recent reflex events
-        let reflex_hits: Vec<MemoryHit> = self
+        let mut reflex_hits: Vec<MemoryHit> = self
             .semantic
             .recall_recent(16)
             .into_iter()
@@ -677,6 +747,13 @@ impl MemoryEngine {
             })
             .collect();
 
+        // Tier‑7 Roundabout bias applied to all hit streams
+        self.apply_roundabout_bias(&mut episodic_hits);
+        self.apply_roundabout_bias(&mut semantic_hits);
+        self.apply_roundabout_bias(&mut vector_hits);
+        self.apply_roundabout_bias(&mut reflex_hits);
+
         RetrievalRanker::merge_and_rank(episodic_hits, semantic_hits, vector_hits, reflex_hits)
     }
 }
+

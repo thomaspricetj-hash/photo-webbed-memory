@@ -232,6 +232,120 @@ impl MemoryIndex {
     }
 
     // ------------------------------------------------------------
+    // HEAT‑AWARE SCORING (UPGRADED)
+    // ------------------------------------------------------------
+    fn heat_score(&self, engine: &MemoryEngine, id: NodeId) -> f32 {
+        engine.states.get(&id).map(|s| {
+            let h = &s.heat;
+
+            // Cognitive fields
+            let cognitive =
+                h.short_term * 0.55 +
+                h.long_term * 0.35 +
+                h.stability * 0.25 -
+                h.volatility * 0.15 +
+                h.resonance * 0.30 +
+                h.inertia * 0.20;
+
+            // Cross‑section fields
+            let spatial = self.spatial_score(id) * 0.35;
+            let drift = self.drift_score(id) * 0.40;
+            let temporal = self.stability_score(id) * 0.25;
+
+            cognitive + spatial + drift + temporal
+        }).unwrap_or(0.0)
+    }
+
+    // ------------------------------------------------------------
+    // TIER‑7 ROUNDABOUT EXIT SCORING (ADDITIVE)
+    // ------------------------------------------------------------
+    fn roundabout_exit_score(
+        &self,
+        engine: &MemoryEngine,
+        from: NodeId,
+        to: NodeId,
+    ) -> f32 {
+        if from == to {
+            return 0.0;
+        }
+
+        let heat = self.heat_score(engine, to);
+        let stability = self.stability_score(to);
+        let drift = self.drift_score(to);
+
+        // Prefer high heat + high stability + low drift
+        let base = heat * 0.6 + stability * 0.4;
+        let drift_penalty = 1.0 / (1.0 + drift * 0.75);
+
+        base * drift_penalty
+    }
+
+    /// Discover candidate exits for roundabout routing from a given node
+    pub fn get_roundabout_exits(
+        &self,
+        engine: &MemoryEngine,
+        from: NodeId,
+        limit: usize,
+    ) -> Vec<(NodeId, f32)> {
+        let mut scored: Vec<(NodeId, f32)> = Vec::new();
+
+        // Use kind + label proximity as a soft filter, but keep it generic
+        if let Some(from_node) = engine.graph.nodes.get(&from) {
+            let from_kind = &from_node.kind;
+            let from_label = from_node.label.to_lowercase();
+
+            // 1. Same kind candidates
+            if let Some(kind_ids) = self.kind_index.get(from_kind) {
+                for id in kind_ids {
+                    if *id == from {
+                        continue;
+                    }
+                    let score = self.roundabout_exit_score(engine, from, *id);
+                    if score > 0.0 {
+                        scored.push((*id, score));
+                    }
+                }
+            }
+
+            // 2. Label‑related candidates via keyword index
+            for word in from_label.split_whitespace() {
+                if let Some(ids) = self.keyword_index.get(&word.to_lowercase()) {
+                    for id in ids {
+                        if *id == from {
+                            continue;
+                        }
+                        let score = self.roundabout_exit_score(engine, from, *id);
+                        if score > 0.0 {
+                            scored.push((*id, score));
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3. Fallback: all nodes if nothing else
+        if scored.is_empty() {
+            for (id, _) in engine.graph.nodes.iter() {
+                if *id == from {
+                    continue;
+                }
+                let score = self.roundabout_exit_score(engine, from, *id);
+                if score > 0.0 {
+                    scored.push((*id, score));
+                }
+            }
+        }
+
+        // Sort by score descending and truncate
+        scored.sort_by(|a, b| b.1.partial_cmp(&a.1).unwrap());
+        if scored.len() > limit {
+            scored.truncate(limit);
+        }
+
+        scored
+    }
+
+    // ------------------------------------------------------------
     // FACT CHECKER (unchanged)
     // ------------------------------------------------------------
     pub fn fact_exists(&self, label: &str) -> bool {
@@ -287,31 +401,6 @@ impl MemoryIndex {
         }
 
         false
-    }
-
-    // ------------------------------------------------------------
-    // HEAT‑AWARE SCORING (UPGRADED)
-    // ------------------------------------------------------------
-    fn heat_score(&self, engine: &MemoryEngine, id: NodeId) -> f32 {
-        engine.states.get(&id).map(|s| {
-            let h = &s.heat;
-
-            // Cognitive fields
-            let cognitive =
-                h.short_term * 0.55 +
-                h.long_term * 0.35 +
-                h.stability * 0.25 -
-                h.volatility * 0.15 +
-                h.resonance * 0.30 +
-                h.inertia * 0.20;
-
-            // Cross‑section fields
-            let spatial = self.spatial_score(id) * 0.35;
-            let drift = self.drift_score(id) * 0.40;
-            let temporal = self.stability_score(id) * 0.25;
-
-            cognitive + spatial + drift + temporal
-        }).unwrap_or(0.0)
     }
 
     // ------------------------------------------------------------

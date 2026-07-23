@@ -1,6 +1,6 @@
 📘 Evaluation License (2026 — MAX‑Tier Edition)
 
-(Updated with Cross‑Section Mapping Engine + Spatial‑Temporal Drift Physics + Multi‑Layer Fusion + Autonomic Homeostasis + BitDrop\_v2 Compression + Hybrid Lookup Physics + Loophole‑Sealed Clauses)
+(Updated with Cross‑Section Mapping Engine + Spatial‑Temporal Drift Physics + Tier‑7 Roundabout Routing + Tier‑8 Cognition Geometry + Tier‑9 Temporal Forecasting + Multi‑Layer Fusion + Autonomic Homeostasis + BitDrop\_v2 Compression + Hybrid Lookup Physics + Loophole‑Sealed Clauses)
 
 Copyright (c) 2026 Thomas Price — All Rights Reserved
 
@@ -37,8 +37,6 @@ No other rights are granted.
 No rights are implied.
 
 No rights are transferable.
-
-
 
 This license is NOT open‑source, NOT permissive, and NOT a commercial license.
 
@@ -490,7 +488,7 @@ analyze compressed payloads to infer internal compression rules
 
 
 
-derive reversible collapse rules from outputs
+derive reversible collapse rules
 
 
 
@@ -779,4 +777,188 @@ The copyright holder is not liable for any damages arising from evaluation or us
 For commercial licensing or IP acquisition, contact:
 
 thomaspricetj-hash (GitHub)
+
+
+
+💰 8. Pricing Guide (2026 — MAX‑Tier Licensing)
+
+Evaluation License
+
+Free
+
+
+
+Non‑commercial only
+
+
+
+No redistribution
+
+
+
+No derivative works
+
+
+
+No cloud hosting
+
+
+
+No production use
+
+
+
+Commercial License (Standard)
+
+For companies, labs, robotics teams, or AI developers.
+
+
+
+$49,000 / year
+
+
+
+Includes:
+
+
+
+commercial usage rights
+
+
+
+internal deployment rights
+
+
+
+production hosting rights
+
+
+
+integration rights
+
+
+
+limited support
+
+
+
+no source code access
+
+
+
+Commercial License (Enterprise MAX‑Tier)
+
+For large organizations, defense contractors, advanced robotics, or cognitive‑agent platforms.
+
+
+
+$190,000 / year
+
+
+
+Includes:
+
+
+
+all Standard rights
+
+
+
+multi‑node deployment
+
+
+
+cluster hosting rights
+
+
+
+extended support
+
+
+
+performance tuning
+
+
+
+custom integration assistance
+
+
+
+no source code access
+
+
+
+Full Intellectual Property Acquisition (Lifetime)
+
+Complete ownership transfer of:
+
+
+
+Photo‑Webbed Core
+
+
+
+BitDrop\_v2
+
+
+
+Hybrid Lookup System
+
+
+
+Cross‑Section Mapping Engine
+
+
+
+Spatial‑Temporal Drift Memory
+
+
+
+Multi‑Layer Fusion Engine
+
+
+
+Autonomic Homeostasis System
+
+
+
+MAX‑Tier Cognitive Physics
+
+
+
+$4.2 million (one‑time)  
+
+Includes:
+
+
+
+full source code
+
+
+
+full rights
+
+
+
+full IP transfer
+
+
+
+unlimited commercial usage
+
+
+
+unlimited redistribution
+
+
+
+unlimited modification
+
+
+
+lifetime updates
+
+
+
+lifetime support
 

@@ -61,15 +61,24 @@ impl MemoryConsolidationEngine {
 
         for id in ids {
             let state = &engine.states[&id];
+            let node = &engine.graph.nodes[&id];
 
-            let score = state.stability * 0.5
+            // Base consolidation score
+            let mut score = state.stability * 0.5
                 + state.heat.long_term * 0.3
                 + state.importance * 0.2;
+
+            // Tier‑8: roundabout‑aware consolidation bias
+            // Nodes with high gravity + cluster alignment become stronger anchors.
+            let zone_bias = 1.0 + node.gravity * 0.25;
+            let cluster_bias = 1.0 + node.cluster_alignment * 0.25;
+            score *= zone_bias * cluster_bias;
 
             if score >= self.stability_threshold
                 && state.heat.long_term >= self.long_term_threshold
                 && state.importance >= self.importance_threshold
             {
+                // Reuse engine boost (unchanged)
                 reuse.boost(engine, id);
 
                 if let Some(s) = engine.states.get_mut(&id) {
@@ -118,12 +127,21 @@ impl MemoryDriftEngine {
                 None => continue,
             };
 
+            let node = &engine.graph.nodes[&id];
+
             let volatility = 1.0 - state.stability;
             let importance_factor = (10.0 - state.importance).max(0.0) / 10.0;
 
-            let drift_amount = self.base_drift_rate
+            let mut drift_amount = self.base_drift_rate
                 * (1.0 + self.volatility_factor * volatility)
-                * (self.importance_protection * importance_factor + (1.0 - self.importance_protection));
+                * (self.importance_protection * importance_factor
+                    + (1.0 - self.importance_protection));
+
+            // Tier‑8: roundabout‑aware drift protection
+            // Nodes with high gravity + hive alignment drift less.
+            let gravity_protection = 1.0 / (1.0 + node.gravity * 0.5);
+            let hive_protection = 1.0 / (1.0 + node.hive_alignment * 0.3);
+            drift_amount *= gravity_protection * hive_protection;
 
             state.heat.long_term *= f32::exp(-drift_amount);
             state.stability *= f32::exp(-drift_amount * 0.5);
@@ -162,9 +180,19 @@ impl MemoryClusteringEngine {
             .iter()
             .map(|id| {
                 let state = &engine.states[id];
-                let score = state.stability * 0.4
+                let node = &engine.graph.nodes[id];
+
+                // Base clustering score
+                let mut score = state.stability * 0.4
                     + state.heat.long_term * 0.3
                     + state.importance * 0.3;
+
+                // Tier‑8: roundabout‑aware clustering
+                // Nodes with strong gravity + hive alignment are pulled into stronger clusters.
+                let gravity_bias = 1.0 + node.gravity * 0.3;
+                let hive_bias = 1.0 + node.hive_alignment * 0.2;
+                score *= gravity_bias * hive_bias;
+
                 (*id, score)
             })
             .collect();
@@ -219,15 +247,27 @@ impl FractalEchoEngine {
                 None => continue,
             };
 
+            let node = &engine.graph.nodes[&id];
+
             let local_rhythm = state.heat.short_term;
             let similarity = 1.0 - (global_rhythm - local_rhythm).abs();
 
             if similarity > 0.6 {
-                let echo_strength = similarity * self.echo_gain;
+                // Tier‑8: roundabout‑aware echo
+                // Nodes with high temporal stability + resonance + gravity get stronger echo.
+                let temporal = state.heat.temporal_stability;
+                let resonance = state.heat.resonance;
+                let geometry_bias = 1.0 + node.gravity * 0.3;
+
+                let echo_strength = similarity
+                    * self.echo_gain
+                    * (0.5 + temporal * 0.3 + resonance * 0.2)
+                    * geometry_bias;
 
                 state.stability = (state.stability + echo_strength).min(1.0);
                 state.heat.long_term += echo_strength * 0.5;
-                state.importance = (state.importance + similarity * self.importance_gain).min(10.0);
+                state.importance =
+                    (state.importance + similarity * self.importance_gain * geometry_bias).min(10.0);
 
                 events.push(FractalEchoEvent {
                     id,

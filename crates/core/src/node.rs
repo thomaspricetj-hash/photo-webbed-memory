@@ -57,6 +57,25 @@ pub struct Node {
 
     /// Semantic gravity (0–1): pull toward conceptual center
     pub gravity: f32,
+
+    // ============================================================
+    // 🔥 Tier‑7 Roundabout Routing Additive Fields
+    // ============================================================
+
+    /// Zone ID for roundabout routing (semantic or spatial region)
+    pub zone: u32,
+
+    /// Centroid ID for region clustering
+    pub centroid: u32,
+
+    /// Drift magnitude (0–1): directional instability
+    pub drift: f32,
+
+    /// Region stability (0–1): how stable this node’s region is
+    pub region_stability: f32,
+
+    /// Exit weight bias for roundabout routing
+    pub exit_bias: f32,
 }
 
 impl Node {
@@ -84,6 +103,13 @@ impl Node {
             hive_alignment: 0.0,
             cluster_alignment: 0.0,
             gravity: 0.0,
+
+            // Tier‑7 roundabout defaults
+            zone: rng.gen_range(1..=8),
+            centroid: rng.gen_range(1..=64),
+            drift: 0.0,
+            region_stability: 0.5,
+            exit_bias: 1.0,
         }
     }
 
@@ -110,6 +136,19 @@ impl Node {
         let gravity_boost = (self.semantic_weight / MAX_SEMANTIC_WEIGHT) * 0.4
             + self.confidence * 0.3;
         self.gravity = (self.gravity + gravity_boost).min(1.0);
+
+        // ============================================================
+        // 🔥 Tier‑7 Roundabout Reinforcement Additive Logic
+        // ============================================================
+
+        // Region stability increases with reinforcement
+        self.region_stability = (self.region_stability + 0.02).min(1.0);
+
+        // Drift decreases with reinforcement (node becomes more stable)
+        self.drift *= 0.95;
+
+        // Exit bias increases slightly for nodes that are frequently reinforced
+        self.exit_bias = (self.exit_bias + 0.01).min(2.0);
     }
 
     /// Tier‑3 MAX decay
@@ -140,6 +179,30 @@ impl Node {
         if self.gravity < 0.0003 {
             self.gravity = 0.0;
         }
+
+        // ============================================================
+        // 🔥 Tier‑7 Roundabout Decay Additive Logic
+        // ============================================================
+
+        // Drift increases slightly with age (node becomes less stable)
+        self.drift = (self.drift + 0.002 * dt).min(1.0);
+
+        // Region stability decays slowly
+        self.region_stability *= f32::exp(-0.001 * dt);
+
+        // Exit bias decays very slowly
+        self.exit_bias *= f32::exp(-0.0005 * dt);
+
+        // Remove tiny noise
+        if self.drift < 0.0003 {
+            self.drift = 0.0;
+        }
+        if self.region_stability < 0.0003 {
+            self.region_stability = 0.0;
+        }
+        if self.exit_bias < 0.0003 {
+            self.exit_bias = 0.0;
+        }
     }
 
     /// Check if node is effectively dead
@@ -149,6 +212,33 @@ impl Node {
         self.hive_alignment == 0.0 &&
         self.cluster_alignment == 0.0 &&
         self.gravity == 0.0
+    }
+
+    // ============================================================
+    // 🔥 Tier‑7 Roundabout Routing Scoring Additive Methods
+    // ============================================================
+
+    /// Compute roundabout stability score for this node.
+    pub fn roundabout_stability(&self) -> f32 {
+        let drift_penalty = 1.0 / (1.0 + self.drift * 1.25);
+        (self.region_stability * drift_penalty).clamp(0.0, 1.0)
+    }
+
+    /// Compute roundabout exit score for routing decisions.
+    pub fn roundabout_exit_score(&self) -> f32 {
+        let stability = self.roundabout_stability();
+        let gravity = self.gravity;
+        let confidence = self.confidence;
+
+        let base = stability * 0.5 + gravity * 0.3 + confidence * 0.2;
+        base * self.exit_bias
+    }
+
+    /// Compute full roundabout score (used by linkers + index).
+    pub fn roundabout_score(&self) -> f32 {
+        let s = self.roundabout_stability();
+        let e = self.roundabout_exit_score();
+        (s * 0.55) + (e * 0.45)
     }
 }
 
